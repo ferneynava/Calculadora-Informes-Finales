@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <?!= include('CSS'); ?>
+  </head>
+  <body>   
+        <div class="Contenedor">
+          <h1 class="Titulo"> Envío de notas a la calculadora </h1>
+            <form onsubmit="return false">
+              <label>
+                Ingrese la URL de la planilla de notas
+              </label>
+              <label for= "InputPeriodo">
+                Periodo
+              </label>
+              <select class="Periodo" name="Periodo" id="InputPeriodo">
+                  <optgroup label="Materia_Grado">
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>Final</option>
+                  </optgroup>
+                </select>
+              <label for="InputMateria">
+                Materia y grado 
+              </label>
+                <select class="MateriaGrado" name="Materia_Grado" id="InputMateria">
+                  <optgroup label="Materia_Grado">
+                    <option>MAT_02</option>
+                    <option>MAT_03</option>
+                    <option>MAT_04</option>
+                    <option>MAT_05</option>
+                    <option>TEC_PK</option>
+                    <option>TEC_K</option> 
+                    <option>TEC_T</option> 
+                    <option>TEC_01</option> 
+                    <option>TEC_02</option> 
+                    <option>TEC_03</option> 
+                    <option>TEC_04</option> 
+                    <option>TEC_05</option> 
+                    <option>TEC_05</option> 
+                    <option>TEC_07</option> 
+                    <option>TEC_08</option> 
+                    <option>TEC_09</option> 
+                    <option>TEC_10</option> 
+                    <option>LC_02</option> 
+                    <option>LC_03</option> 
+                    <option>LC_04</option> 
+                    <option>LC_05</option> 
+                    <option>ETIC_02</option> 
+                    <option>ETIC_03</option> 
+                    <option>ETIC_04</option> 
+                    <option>ETIC_05</option> 
+                    <option>ETIC_06</option> 
+                    <option>ETIC_07</option> 
+                    <option>ETIC_08</option> 
+                    <option>ETIC_09</option> 
+                  </optgroup>
+                </select>
+              <input type="submit" value="Enviar" onclick="enviar()">
+            </form>
+        </div>
+         
+    <script>
+      function enviar(){
+        const asignatura = document.querySelector(".MateriaGrado");
+        const periodo = document.querySelector(".Periodo");
+
+        let asignaturas = asignatura.options[asignatura.selectedIndex];
+        let selectedAsignaturas = asignaturas.text;
+
+        let periodos = periodo.options[periodo.selectedIndex];
+        let selectedPeriodo = periodos.text;
+
+        let objeto = {
+          asignatura: selectedAsignaturas,
+          periodo: selectedPeriodo
+        }
+        google.script.run.main(objeto);
+      }
+    </script>
+  </body>
+</html>
