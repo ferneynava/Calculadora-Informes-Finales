@@ -1,26 +1,20 @@
+/* eslint-disable space-before-function-paren */
 /* eslint-disable prefer-const */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-function doGet () {
+function doGet() {
   return HtmlService.createTemplateFromFile('index').evaluate()
 }
 
-function include (filename) {
+function include(filename) {
   return HtmlService.createHtmlOutputFromFile(filename)
     .getContent()
 }
 
-function main (numero) {
-  const hoja = SpreadsheetApp.openById('1J6iynccfCQ2cQkkM_FQtZ_HhtS1njq3OWM2Oud885V4').getSheetByName('3º')
-  const dataNombre = hoja.getDataRange().getValues()
-  const calculadora = SpreadsheetApp.openById('18t8aEDKxRe9m6MydLV4VQlyNZc6LSQy8Ul5OvhtZVsI').getSheetByName('Datos 1P')
-  let dataCalculadora = calculadora.getDataRange().getValues()
-
-  const numeroEstuden = dataNombre.map(filaNom => filaNom[0])
-  numeroEstuden.shift()
-  const arrayNombres = numeroEstuden.filter(eliminar => eliminar !== '')
-
-  const arrayNotasPri = []
+function main(numero) {
+  const id = numero.idnotas
+  const hoja = SpreadsheetApp.openById(`${id}`).getSheetByName('3º')
+  const dataCompleta = hoja.getDataRange().getValues()
   const asignatura = numero.asignatura
   const arrayAsignatutas = asignatura.split('_')
   const materia = arrayAsignatutas[0]
@@ -32,23 +26,28 @@ function main (numero) {
     ETIC: 'ÉticaÉtica'
   }
 
-  const asignaturaPlaUnificada = objectAsignatura[materia] ?? 'N/A'
-  const arrayAsignaturasPlaUnificada = dataNombre[0]
-  let celdaColumna = arrayAsignaturasPlaUnificada.indexOf(asignaturaPlaUnificada)
+  const idCal = numero.idcalculadora
+  const calculadora = SpreadsheetApp.openById(`${idCal}`).getSheetByName('Datos 1P')
+  let dataCalculadora = calculadora.getDataRange().getValues()
+  let arrayAsignatura = dataCalculadora[2]
 
-  let arrayNotas = dataNombre.map(filaNota => filaNota[celdaColumna])
-  arrayNotas.shift()
+  const numeroEstuden = dataCompleta.map(filaNom => filaNom[0])
+  numeroEstuden.shift()
+  const arrayNombres = numeroEstuden.filter(eliminar => eliminar !== '')
+
   const periodos = numero.periodo
-
+  let celdaColumnaAsig = arrayAsignatura.indexOf(asignatura)
+  const asignaturaPlaCompleta = objectAsignatura[materia] ?? 'N/A'
+  const arrayAsignaturasPlaCompleta = dataCompleta[0]
+  let celdaColumna = arrayAsignaturasPlaCompleta.indexOf(asignaturaPlaCompleta)
+  let n = 1
+  let c = 9
   if (periodos === '01') {
-    const contador = 5
-    for (let step = 0; step <= arrayNombres.length; step++) {
-      const resultado = contador * step
-      arrayNotasPri.push(arrayNotas[resultado])
+    for (let i = 0; i < arrayNombres.length; i++) {
+      n = n + 5
+      let notas = hoja.getRange(n, celdaColumna + 1).getValues()
+      c = c + 1
+      calculadora.getRange(c, celdaColumnaAsig + 1).setValue(notas)
     }
-  }
-  arrayNotasPri.pop()
-
-  Logger.log(arrayNotasPri)
-  // let data = dataNombre.map(fila => fila[1]).filter(periodo => periodo == periodos);
+  }// let data = dataNombre.map(fila => fila[1]).filter(periodo => periodo == periodos);
 }

@@ -6,15 +6,24 @@
   </head>
   <body>   
         <div class="Contenedor">
-          <h1 class="Titulo"> Envío de notas a la calculadora </h1>
-            <form onsubmit="return false">
-              <label>
-                Ingrese la URL de la planilla de notas
+          <h1 class="Titulo">Docente</h1>
+          
+            <form class = "formIDcal" onsubmit="return false">
+              <label for="InputID">
+                Ingrese la clave (ID) planilla de notas
               </label>
-              <label for= "InputPeriodo">
-                Periodo
+              <input class="IDnotas" id="InputID" type="text" placeholder="ID">
+
+              <label for="InputIDcal">
+                Ingrese la clave (ID) calculadora Docente 
               </label>
-              <select class="Periodo" name="Periodo" id="InputPeriodo">
+              <input class="IDcalculadora" id="InputIDcal" type="text" placeholder="ID">
+          
+              <div class = "container_SelectPeriodo">
+                <label for= "InputPeriodo">
+                  Periodo
+                </label>
+                <select class="Periodo" name="Periodo" id="InputPeriodo">
                   <optgroup label="Materia_Grado">
                     <option>01</option>
                     <option>02</option>
@@ -23,15 +32,24 @@
                     <option>Final</option>
                   </optgroup>
                 </select>
-              <label for="InputMateria">
-                Materia y grado 
-              </label>
+              </div>
+              
+              <div class = "container_SelectGrado">
+                <label for="InputMateria">
+                  Materia y grado 
+                </label>
                 <select class="MateriaGrado" name="Materia_Grado" id="InputMateria">
                   <optgroup label="Materia_Grado">
                     <option>MAT_02</option>
                     <option>MAT_03</option>
                     <option>MAT_04</option>
                     <option>MAT_05</option>
+                    <option>MAT_06</option>
+                    <option>MAT_07</option>
+                    <option>MAT_08</option>
+                    <option>MAT_09</option>
+                    <option>MAT_10</option>
+                    <option>MAT_11</option>
                     <option>TEC_PK</option>
                     <option>TEC_K</option> 
                     <option>TEC_T</option> 
@@ -40,11 +58,10 @@
                     <option>TEC_03</option> 
                     <option>TEC_04</option> 
                     <option>TEC_05</option> 
-                    <option>TEC_05</option> 
+                    <option>TEC_06</option> 
                     <option>TEC_07</option> 
                     <option>TEC_08</option> 
                     <option>TEC_09</option> 
-                    <option>TEC_10</option> 
                     <option>LC_02</option> 
                     <option>LC_03</option> 
                     <option>LC_04</option> 
@@ -57,9 +74,164 @@
                     <option>ETIC_07</option> 
                     <option>ETIC_08</option> 
                     <option>ETIC_09</option> 
+                    <option>ART_PK</option>
+                    <option>ART_K</option>
+                    <option>ART_T</option>
+                    <option>ART_01</option>  
+                    <option>ART_02</option>  
+                    <option>ART_03</option> 
+                    <option>ART_04</option>   
+                    <option>ART_05</option>
+                    <option>ART_06</option>      
+                    <option>ART_07</option>  
+                    <option>ART_08</option> 
+                    <option>ART_09</option>   
+                    <option>ART_10</option> 
+                    <option>ART_11</option>   
+                    <option>SOC_02</option>   
+                    <option>SOC_03</option>
+                    <option>SOC_04</option>  
+                    <option>SOC_05</option>
+                    <option>SOC_06</option>
+                    <option>SOC_07</option>
+                    <option>SOC_08</option>
+                    <option>SOC_09</option>  
+                    <option>INV_10</option>  
+                    <option>INV_11</option>  
+                    <option>E_FIS_PK</option>  
+                    <option>E_FIS_K</option>
+                    <option>E_FIS_T</option>   
+                    <option>E_FIS_01</option>   
+                    <option>E_FIS_02</option>   
+                    <option>E_FIS_03</option>      
+                    <option>E_FIS_04</option>  
+                    <option>E_FIS_05</option>    
+                    <option>E_FIS_06</option> 
+                    <option>E_FIS_07</option> 
+                    <option>E_FIS_08</option> 
+                    <option>E_FIS_09</option>
+                    <option>E_FIS_10</option> 
+                    <option>E_FIS_11</option>  
+                    <option>SCI_02</option> 
+                    <option>SCI_03</option>   
+                    <option>SCI_04</option> 
+                    <option>SCI_05</option>  
+                    <option>SCI_06</option>
+                    <option>SCI_07</option>
+                    <option>SCI_08</option>
+                    <option>SCI_09</option> 
+                    <option>MATH_02</option>
+                    <option>MATH_03</option>
+                    <option>MATH_04</option> 
+                    <option>MATH_05</option> 
+                    <option>PL_06</option>        
+                    <option>PL_07</option> 
+                    <option>PL_08</option> 
+                    <option>PL_09</option> 
+                    <option>CN_02</option> 
+                    <option>CN_03</option>
+                    <option>CN_04</option> 
+                    <option>CN_05</option> 
+                    <option>BIO_06</option> 
+                    <option>BIO_07</option>
+                    <option>BIO_08</option> 
+                    <option>BIO_09</option>  
+                    <option>LC_01</option>  
+                    <option>MAT_01</option> 
+                    <option>CN_PK</option> 
+                    <option>CN_K</option>
+                    <option>CN_01</option>
+                    <option>SOC_01</option>
+                    <option>SCI_01</option>
+                    <option>MATH_01</option>
+                    <option>ETIC_PK</option>
+                    <option>ETIC_K</option>
+                    <option>ETIC_T</option>
+                    <option>ETIC_01</option>
+                    <option>ING_02</option>
+                    <option>ING_03</option>
+                    <option>ING_04</option>
+                    <option>ING_05</option>
+                    <option>ING_06</option>
+                    <option>ING_07</option>
+                    <option>ING_08</option>
+                    <option>ING_09</option>
+                    <option>ING_10</option>
+                    <option>ING_11</option>
+                    <option>LC_06</option>
+                    <option>LC_07</option>
+                    <option>LC_08</option>
+                    <option>LC_09</option>
+                    <option>LC_10</option>
+                    <option>LC_11</option>
+                    <option>FIS_10</option>
+                    <option>FIS_11</option>
+                    <option>QUI_10</option>
+                    <option>QUI_11</option>
+                    <option>ICFES_10</option>
+                    <option>ICFES_11</option>
+                    <option>MUS_PK</option>
+                    <option>MUS_K</option>
+                    <option>MUS_T</option>
+                    <option>MUS_01</option>
+                    <option>MUS_02</option>
+                    <option>MUS_03</option>
+                    <option>MUS_04</option>
+                    <option>MUS_05</option>
+                    <option>MUS_06</option>
+                    <option>MUS_07</option>
+                    <option>MUS_08</option>
+                    <option>MUS_09</option>
+                    <option>MUS_10</option>
+                    <option>MUS_11</option>
+                    <option>LC_PK</option>
+                    <option>LC_K</option>
+                    <option>LC_T</option>
+                    <option>MAT_PK</option>
+                    <option>MAT_K</option>
+                    <option>MAT_T</option>
+                    <option>SOC_PK</option>
+                    <option>SOC_K</option>
+                    <option>ING_PK</option>
+                    <option>ING_K</option>
+                    <option>ING_T</option>
+                    <option>ING_01</option>
+                    <option>SCI_PK</option>
+                    <option>SCI_K</option>
+                    <option>SCI_T</option>
+                    <option>MATH_PK</option>
+                    <option>MATH_K</option>
+                    <option>MATH_T</option>
+                    <option>ERE_K</option>
+                    <option>ERE_T</option>
+                    <option>ERE_01</option>
+                    <option>ERE_02</option>
+                    <option>ERE_03</option>
+                    <option>ERE_04</option>
+                    <option>ERE_05</option>
+                    <option>ERE_06</option>
+                    <option>ERE_07</option>
+                    <option>SOC_10</option>
+                    <option>SOC_11</option>
+                    <option>FILO_06</option>
+                    <option>FILO_07</option>
+                    <option>FILO_08</option>
+                    <option>FILO_09</option>
+                    <option>FILO_10</option>
+                    <option>FILO_11</option>
+                    <option>ETIC_10</option>
+                    <option>ETIC_11</option>
+                    <option>ERE_08</option>
+                    <option>ERE_09</option>
+                    <option>ERE_10</option>
+                    <option>ERE_11</option>
                   </optgroup>
                 </select>
-              <input type="submit" value="Enviar" onclick="enviar()">
+              </div>
+                
+              <button class = "enviar" onclick="enviar()">
+                Enviar
+              </button>
             </form>
         </div>
          
@@ -67,6 +239,8 @@
       function enviar(){
         const asignatura = document.querySelector(".MateriaGrado");
         const periodo = document.querySelector(".Periodo");
+        const idNotas = document.querySelector(".IDnotas");
+        const idCalculadora = document.querySelector(".IDcalculadora"); 
 
         let asignaturas = asignatura.options[asignatura.selectedIndex];
         let selectedAsignaturas = asignaturas.text;
@@ -74,9 +248,14 @@
         let periodos = periodo.options[periodo.selectedIndex];
         let selectedPeriodo = periodos.text;
 
+        let IDnotas = idNotas.value;  
+        let IDcalculadora = idCalculadora.value;
+
         let objeto = {
           asignatura: selectedAsignaturas,
-          periodo: selectedPeriodo
+          periodo: selectedPeriodo,
+          idnotas: IDnotas,
+          idcalculadora: IDcalculadora
         }
         google.script.run.main(objeto);
       }
