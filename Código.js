@@ -11,7 +11,7 @@ function include(filename) {
     .getContent()
 }
 
-function main(numero) {
+function docentes(numero) {
   const objectAsignatura = {
     MAT: 'MatemáticasMatemáticas',
     TEC: 'TecnologíaTecnología',
@@ -91,6 +91,17 @@ function main(numero) {
     '11': '11º'
   }
 
+  const objectPeriodos = {
+    '01': '1P',
+    '02': '2P',
+    '03': '3P',
+    '04': '4P',
+    Final: '5P'
+  }
+
+  const periodoIngre = numero.periodo
+  const periodo = objectPeriodos[periodoIngre] ?? 'N/A'
+
   const asignatura = numero.asignatura
   const arrayAsignatutas = asignatura.split('_')
   let materia = arrayAsignatutas[0]
@@ -107,10 +118,9 @@ function main(numero) {
   const id = numero.idnotas
   const hoja = SpreadsheetApp.openById(`${id}`).getSheetByName(gradoPlaCompleta)
   const dataCompleta = hoja.getDataRange().getValues()
-  const periodos = numero.periodo
 
   const idCal = numero.idcalculadora
-  const calculadora = SpreadsheetApp.openById(`${idCal}`).getSheetByName('Datos 1P')
+  const calculadora = SpreadsheetApp.openById(`${idCal}`).getSheetByName(`Datos ${periodo}`)
   let dataCalculadora = calculadora.getDataRange().getValues()
   let arrayAsignatura = dataCalculadora[2]
 
@@ -122,14 +132,68 @@ function main(numero) {
   const asignaturaPlaCompleta = objectAsignatura[materia] ?? 'N/A'
   const arrayAsignaturasPlaCompleta = dataCompleta[0]
   let celdaColumna = arrayAsignaturasPlaCompleta.indexOf(asignaturaPlaCompleta)
-  let n = 1
-  let c = 9
-  if (periodos === '01') {
+
+  let n1 = 2
+  let c1 = 9
+
+  if (periodo === '1P') {
     for (let i = 0; i < arrayNombres.length; i++) {
-      n = n + 5
-      let notas = hoja.getRange(n, celdaColumna + 1).getValues()
-      c = c + 1
-      calculadora.getRange(c, celdaColumnaAsig + 1).setValue(notas)
+      let notas = hoja.getRange(n1, celdaColumna + 1).getValues()
+      n1 += 5
+      c1 += 1
+      calculadora.getRange(c1, celdaColumnaAsig + 1).setValue(notas)
     }
-  }// let data = dataNombre.map(fila => fila[1]).filter(periodo => periodo == periodos);
+  }
+
+  let n2 = 3
+  let c2 = 9
+
+  if (periodo === '2P') {
+    for (let i = 0; i < arrayNombres.length; i++) {
+      let notas = hoja.getRange(n2, celdaColumna + 1).getValues()
+      n2 += 5
+      c2 += 1
+      calculadora.getRange(c2, celdaColumnaAsig + 1).setValue(notas)
+    }
+  }
+
+  let n3 = 4
+  let c3 = 9
+
+  if (periodo === '3P') {
+    for (let i = 0; i < arrayNombres.length; i++) {
+      let notas = hoja.getRange(n3, celdaColumna + 1).getValues()
+      n3 += 5
+      c3 += 1
+      calculadora.getRange(c3, celdaColumnaAsig + 1).setValue(notas)
+    }
+  }
+
+  let n4 = 5
+  let c4 = 9
+
+  if (periodo === '4P') {
+    for (let i = 0; i < arrayNombres.length; i++) {
+      let notas = hoja.getRange(n4, celdaColumna + 1).getValues()
+      n4 += 5
+      c4 += 1
+      calculadora.getRange(c4, celdaColumnaAsig + 1).setValue(notas)
+    }
+  }
+
+  let n5 = 6
+  let c5 = 9
+
+  if (periodo === '5P') {
+    for (let i = 0; i < arrayNombres.length; i++) {
+      let notas = hoja.getRange(n5, celdaColumna + 1).getValues()
+      n5 += 5
+      c5 += 1
+      calculadora.getRange(c5, celdaColumnaAsig + 1).setValue(notas)
+    }
+  }
+}
+
+function evaluaciones(numeros) {
+  Logger.log(numeros)
 }

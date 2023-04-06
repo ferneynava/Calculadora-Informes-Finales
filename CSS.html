@@ -21,20 +21,21 @@ body{
 }
 
 .Contenedor{
-  background: #e0e0e0;
-  box-shadow:
-    20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+    background: #e0e0e0;
+    box-shadow:
+                20px 20px 60px #bebebe,
+                -20px -20px 60px #ffffff;
     border-radius: 50px;
-    height: 40rem;
-    width: 30rem;
     display: grid;
     place-content: center;
+    grid-template-columns: auto 35rem;
+    height: 43rem;
 }
 
 h1{
     text-align: center;
-    font-size: 3rem;
+    font-size: 35px;
+    margin: 12px;
 }
 
 form {
@@ -53,7 +54,7 @@ label {
 .formIDcal .IDnotas  {
     text-align: center;
     background: transparent;
-    margin: 20px;
+    margin: 11px;
     border-radius: 10px;
     border: 2px solid rgba(84, 84, 84, 0.25);
     height: 25px;
@@ -65,7 +66,7 @@ label {
 .formIDcal .IDcalculadora{
     text-align: center;
     background: transparent;
-    margin: 20px;
+    margin: 11px;
     border-radius: 10px;
     border: 2px solid rgba(84, 84, 84, 0.25);;
     height: 25px;
@@ -97,7 +98,7 @@ input::placeholder {
     color: white;
     height: 30px;
     width: 26rem;
-    margin: 20px;
+    margin: 11px;
     border-radius: 10px;
     font-size: 15px;
     background: #222225;
@@ -108,40 +109,127 @@ input::placeholder {
     color: white;
     height: 30px;
     width: 26rem;
-    margin: 20px;
+    margin: 11px;
     border-radius: 10px;
     font-size: 15px;
     background: #222225;
     border: 2px solid rgba(255,255,255,0.25);
 }
 
-              
 .enviar{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30px;
-    width: 12rem;
+    padding: 12px 24px;
     background-color: white;
-    font-size: 1rem;
-    padding: 1rem 1.5rem;
-    border: 2px solid white;
-    border-radius: .5rem;
+    font-size: 25px;
+    font-weight: 600;
+    border: none;
+    border-radius: 48px;
     cursor: pointer;
     transition: all 1s ease; 
-    box-shadow: .5rem .5rem 1rem #ccc,
-                -.5rem -.5rem 1rem #fff;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px  #ffffff;
+    z-index: 1;
+    transition: 0.3s;
+    overflow: hidden;
 }
 
 .enviar:hover{
-  box-shadow: .5rem .5rem 1rem #fff,
-                -.5rem -.5rem 1rem #ccc;
+    box-shadow: #ffffff
+}
+
+.enviar::before{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+    border-radius: 48px;
+    background-image: linear-gradient(
+        to right, 
+    #6c16f7, 
+    #0067ff, 
+    #0092ff, 
+    #00b4ff, 
+    #7dd1ff, 
+    #a4dbfe, 
+    #c5e5fc, 
+    #e2effa, 
+    #e4ebf5, 
+    #e5e8ef, 
+    #e5e5e9, 
+    #e3e3e3);
+    transition: 0.5s ease;
+    z-index: -1;
+
+}
+
+.enviar:hover::before{
+    width: 100%;
 }
 
 .enviar:active{
-  box-shadow: inset .2rem .2rem 1rem #fff,
-              inset -.2rem -.2rem 1rem #ccc;
+    box-shadow: inset 4rem 4rem 12rem #ffffff,
+                inset -4rem -4rem 12rem #c5c5c5;
 }
-              
+
+.contenedor__Evaluación{
+    border-left: 2px solid rgba(9, 9, 9, 0.653);
+}
+
+.formIDplanilla .IDtuplanilla {
+    text-align: center;
+    background: transparent;
+    margin: 11px;
+    border-radius: 10px;
+    border: 2px solid rgba(84, 84, 84, 0.25);
+    height: 25px;
+    width: 26rem;
+    outline: none;
+    font-size: 16px;
+}
+
+.formIDplanilla .IDcalculadoraEva{
+    text-align: center;
+    background: transparent;
+    margin: 11px;
+    border-radius: 10px;
+    border: 2px solid rgba(84, 84, 84, 0.25);;
+    height: 25px;
+    width: 26rem;
+    outline: none;
+    font-size: 16px;
+}
+
+.formIDplanilla .Colum{
+    text-align: center;
+    background: transparent;
+    margin: 11px;
+    border-radius: 10px;
+    border: 2px solid rgba(84, 84, 84, 0.25);;
+    height: 25px;
+    width: 6rem;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.formIDplanilla .Fila{
+    text-align: center;
+    background: transparent;
+    margin: 11px;
+    border-radius: 10px;
+    border: 2px solid rgba(84, 84, 84, 0.25);;
+    height: 25px;
+    width: 6rem;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 </style>

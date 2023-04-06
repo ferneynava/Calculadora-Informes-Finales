@@ -6,8 +6,8 @@
   </head>
   <body>   
         <div class="Contenedor">
-          <h1 class="Titulo">Docente</h1>
-          
+          <div class="contenedor__Docente">
+            <h1 class="Titulo">Docente</h1>
             <form class = "formIDcal" onsubmit="return false">
               <label for="InputID">
                 Ingrese la clave (ID) planilla de notas
@@ -230,14 +230,118 @@
                 </select>
               </div>
                 
-              <button class = "enviar" onclick="enviar()">
+              <button class = "enviar" onclick="docente()">
                 Enviar
               </button>
             </form>
+          </div>
+          
+          <div class="contenedor__Evaluación">
+              <h1>Evaluaciones</h1>
+
+              <div class = "container_SelectPeriodo">
+                <label for= "InputPeriodo">
+                  Periodo
+                </label>
+                <select class="PeriodoEva" name="Periodo" id="InputPeriodo">
+                  <optgroup label="Materia_Grado">
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>Final</option>
+                  </optgroup>
+                </select>
+              </div>
+              
+              <div class = "container_SelectGrado">
+                <label for="InputMateria">
+                  Materia y grado 
+                </label>
+                <select class="MateriaGradoEva" name="Materia_Grado" id="InputMateria">
+                  <optgroup label="Materia_Grado">
+                    <option>MAT_03</option>
+                    <option>MAT_04</option>
+                    <option>MAT_05</option>
+                    <option>MAT_06</option>
+                    <option>MAT_07</option>
+                    <option>MAT_08</option>
+                    <option>MAT_09</option>
+                    <option>MAT_10</option>
+                    <option>MAT_11</option> 
+                    <option>LC_03</option> 
+                    <option>LC_04</option> 
+                    <option>LC_05</option> 
+                    <option>LC_06</option>
+                    <option>LC_07</option>
+                    <option>LC_08</option>
+                    <option>LC_09</option>
+                    <option>LC_10</option>
+                    <option>LC_11</option> 
+                    <option>SOC_03</option>
+                    <option>SOC_04</option>  
+                    <option>SOC_05</option>
+                    <option>SOC_06</option>
+                    <option>SOC_07</option>
+                    <option>SOC_08</option>
+                    <option>SOC_09</option>
+                    <option>SOC_10</option>
+                    <option>SOC_11</option>
+                    <option>ING_03</option>
+                    <option>ING_04</option>
+                    <option>ING_05</option>
+                    <option>ING_06</option>
+                    <option>ING_07</option>
+                    <option>ING_08</option>
+                    <option>ING_09</option>
+                    <option>ING_10</option>
+                    <option>ING_11</option>
+                    <option>CN_03</option>
+                    <option>CN_04</option> 
+                    <option>CN_05</option> 
+                    <option>CN_06</option> 
+                    <option>CN_07</option> 
+                    <option>CN_08</option>
+                    <option>CN_09</option>  
+                    <option>CN_10</option> 
+                    <option>CN_11</option> 
+                  </optgroup>
+                </select>
+              </div>
+                
+              <form class = "formIDplanilla" onsubmit="return false">
+                <label for="InputIDplanilla">
+                  Ingrese la clave (ID) de tu planilla de notas
+                </label>
+                <input class="IDtuplanilla" id="InputIDplanilla" type="text" placeholder="ID">
+
+                <label for="InputIDcalEva">
+                  Ingrese la clave (ID) calculadora Evaluacion
+                </label>
+                <input class="IDcalculadoraEva" id="InputIDcalEva" type="text" placeholder="ID">
+                
+              <label for="InputColum">
+                Escriba la letra de la columna donde se 
+                encuentra las notas de las evaluaciones. 
+              </label>
+              <input class="Colum" id="InputColum" type="text" placeholder="G">
+
+              <label for="InputFila">
+                Seleccione el número de la fila desde donde 
+                inicia la primera nota de la evaluación. 
+              </label>
+              <input class="Fila" id="InputFila" type="number" placeholder="3">
+
+                
+                <button class = "enviar" onclick="evaluacion()">
+                  Enviar
+                </button>
+              </form>
+          </div>
         </div>
-         
+        
     <script>
-      function enviar(){
+      function docente(){
         const asignatura = document.querySelector(".MateriaGrado");
         const periodo = document.querySelector(".Periodo");
         const idNotas = document.querySelector(".IDnotas");
@@ -258,8 +362,26 @@
           idnotas: IDnotas,
           idcalculadora: IDcalculadora
         }
-        google.script.run.main(objeto);
+        google.script.run.docentes(objeto);
       }
+
+      function evaluacion(){
+        const periodoEva = document.querySelector(".PeriodoEva")
+        const asignaturaEva = document.querySelector(".MateriaGradoEva");
+
+        let periodosEva = periodoEva.options[periodoEva.selectedIndex];
+        let selectedPeriodoEva = periodosEva.text;
+
+        let asignaturasEva = asignaturaEva.options[asignaturaEva.selectedIndex];
+        let selectedAsignaturasEva = asignaturasEva.text;
+
+        let objetoEva = {
+          periodoEva: selectedPeriodoEva,
+          asignaturaEva: selectedAsignaturasEva
+        }
+
+        google.script.run.evaluaciones(objetoEva);
+      } 
     </script>
   </body>
 </html>
