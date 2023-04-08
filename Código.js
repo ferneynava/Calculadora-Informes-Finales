@@ -3,7 +3,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 function doGet() {
-  return HtmlService.createTemplateFromFile('index').evaluate()
+  return HtmlService.createTemplateFromFile('index').evaluate().setTitle('Envio de datos MauxiChia')
 }
 
 function include(filename) {
@@ -99,6 +99,26 @@ function docentes(numero) {
     Final: '5P'
   }
 
+  const objectDocente = {
+    Doc_Amanda: '1XB1-v-m9lBm1scgXfX1sn7XK2OAmjsX4AVVHZUZ6Jhw',
+    Doc_Angela: '1kwM2CVB8Rby7PGHdZhq9xXZ7KhAOSQRueuXxL8JpPKQ',
+    Doc_Daniela: '1sOq0XaFy7_fJlOZQnWAFqJnFtyJq4NJUyQffMV-c6J8',
+    Doc_Erika: '1XZGOUBAg6lOViB23YMpB3zLvXZSbxcygxJhTja5AiLU',
+    Doc_Ferney: '18t8aEDKxRe9m6MydLV4VQlyNZc6LSQy8Ul5OvhtZVsI',
+    Doc_John: '1GUZJvDYGAdy4H8UpNFPVJTO-gUb0Nd8yLpf7J90tauI',
+    Doc_JuanPablo: '1SlCg1RXGajBBe4HEGR3Vda2kUd_lcM0D3atuzrccXdY',
+    Doc_July: '1L9EUDudzmn8l0_9wdXkE-g_uNWwoCl5fDfPeX217-E0',
+    Doc_Karyna: '1sejVpoJcWCsGCl44UPnHtf9Dk5esjlbbh2KF7Xln9ng',
+    Doc_Katherine: 'hqPA5kedWn7yommZgBVK68JKs9Vpz_ppeQHwKY',
+    Doc_Kevin: '1aB8F9iyw6V7J5O2aSI9fjrnovMqDT3zJ6aLA9id6X5w',
+    Doc_Luisa: '13Ymh4ornfqJTfA4SDrqRGjtyGgIxLR5VRG-XAJFwDVI',
+    Doc_Mateo: '1DldUG-_A_baDFpF5IbnJeP72sG1MxYagV4ZJn7A9oxQ',
+    Doc_Oscar: '1zIJSceuJSs9sh3E5GPgiEef87AHc5gBRXr_bfbdbN7k',
+    Doc_Patricia: '1oOVTRGI6y2o4qevMv8nzbdPurAjO5q8AZWqoLMulxY8',
+    Doc_SorJaneth: '14cMmtnrNBf900U7TrXm1zO28QfJkRVVgtF4JDUT0HUk',
+    Doc_Victoria: '1LANDaIZfbe9oGAJitER2Mpf0azZkcV6lvuwYQDfu6c4'
+  }
+
   const periodoIngre = numero.periodo
   const periodo = objectPeriodos[periodoIngre] ?? 'N/A'
 
@@ -119,8 +139,10 @@ function docentes(numero) {
   const hoja = SpreadsheetApp.openById(`${id}`).getSheetByName(gradoPlaCompleta)
   const dataCompleta = hoja.getDataRange().getValues()
 
-  const idCal = numero.idcalculadora
-  const calculadora = SpreadsheetApp.openById(`${idCal}`).getSheetByName(`Datos ${periodo}`)
+  const docente = numero.idCalculadora
+  const idDocente = objectDocente[docente] ?? 'N/A'
+
+  const calculadora = SpreadsheetApp.openById(`${idDocente}`).getSheetByName(`Datos ${periodo}`)
   let dataCalculadora = calculadora.getDataRange().getValues()
   let arrayAsignatura = dataCalculadora[2]
 
@@ -195,5 +217,154 @@ function docentes(numero) {
 }
 
 function evaluaciones(numeros) {
-  Logger.log(numeros)
+  let idPlanillaNotas = numeros.idnotasEva
+  let materiaGrado = numeros.asignaturaEva
+  let columna = numeros.columa
+  let numeroEs = numeros.numeroEst
+  let mayusColumna = columna.toUpperCase()
+  let fila = numeros.fila
+
+  const arrayAsignatutas = materiaGrado.split('_')
+  let grados = arrayAsignatutas[1]
+  let materia = arrayAsignatutas[0]
+
+  let evalMateria = 'Eva_' + materia
+
+  const objectPeriodosEva = {
+    '01': '1P',
+    '02': '2P',
+    '03': '3P',
+    '04': '4P',
+    Final: '5P'
+  }
+
+  const objectEvaMaterias = {
+    Eva_MAT: '1cyDyae-stuOSTLje0npIokayvJEPZzTPxpB-jhTIp38',
+    Eva_SOC: '17fN-tEadh6WLUHXGzAZcVI7uN0Lv9F_Slv8g--CM8xo',
+    Eva_LC: '1OgnITsMPKNIB4yVW5v1U0IzI0LJlng6z-JU954PxuVA',
+    Eva_ING: '1bWSc3ctSnsxSYU-Sqot-lG_Dxi9HMZomBmue0hahUuo',
+    Eva_CN: '14xV5uEn42TSzsumBxl1OrKYpQbV52sqdIl7TFq8Og1I'
+  }
+
+  const objectGrado = {
+    '03': '3',
+    '04': '4',
+    '05': '5',
+    '06': '6',
+    '07': '7',
+    '08': '8',
+    '09': '9',
+    // eslint-disable-next-line quote-props
+    '10': '10',
+    // eslint-disable-next-line quote-props
+    '11': '11'
+  }
+
+  let grado = objectGrado[grados]
+  let nombreHoja = grado + ' ' + materia
+  const planillaNotas = SpreadsheetApp.openById(idPlanillaNotas).getSheetByName(nombreHoja)
+
+  let hojaEva = objectEvaMaterias[evalMateria]
+
+  const periodoEvaIngre = numeros.periodoEva
+  const periodoEva = objectPeriodosEva[periodoEvaIngre] ?? 'N/A'
+  const calculadoraEva = SpreadsheetApp.openById(hojaEva).getSheetByName(`Datos ${periodoEva}`)
+  let dataCalculadoraEva = calculadoraEva.getDataRange().getValues()
+  let arrayAsignaturaEva = dataCalculadoraEva[2]
+  let celdaColumnaAsig = arrayAsignaturaEva.indexOf(materiaGrado)
+
+  let filaNum = Number(fila)
+  let c5 = 9
+
+  for (let i = 0; i < numeroEs; i++) {
+    let filaString = filaNum.toString()
+    const dataCompletaNotas = planillaNotas.getRange(mayusColumna + filaString).getValues()
+    filaNum += 1
+    c5 += 1
+    calculadoraEva.getRange(c5, celdaColumnaAsig + 1).setValue(dataCompletaNotas)
+  }
+}
+
+function curso(numeros) {
+  const objectGrado = {
+    '00_K': '1V9DxP4MrvWV24c2v0_bAxUkYrsdXLFMp3EMe81O8Kvs',
+    '00_PK': '1r_FOk72TfYaikMKWF0zSkQ7qP7_CnGlEiz3Rit4p7XQ',
+    '00_T': '1ieXf0KSn4ybzFF2fjebpvrvVsWdbl9AB_kh5fh_cxC4',
+    '01': '1Rc6KLWI7HbMRTbBqW2n4wpfNDJnvS0Ax_kXvmrivOBs',
+    '02': '1o__2-AOkTrvcrwkYL_QTFQTofhHj5M5jij2REzZRoJU',
+    '03': '1IDnC0cTgTMjNB57gTb2IrxDNjp3ixYQGEyS4rXxXdRE',
+    '04': '12GrBIsDXLrWbDMDMtW6s2e4MYS9bJHJYB5nY-pgPRKs',
+    '05': '1eXiA69pEr8yZdHM3bTxfZ2f9KTzNkNn55NI_ThdPbmY',
+    '06': '1pZ-cz_Bmq_9784pFXsOtSVo-yMYgFQmqOjk9DwlsmSs',
+    '07': '1PphndEzhN0wod3BxzNfPdS8jlpwzJtbZvFamXX2aZEI',
+    '08': '1SXa5D3HMhdg4nIIa_cpsy1IwYX3_MWXvIcKFZ2VsBCc',
+    '09': '1hmiODqziuLO7Q2_sdpZph7x-yQHASo6X2lWtQth9SFg',
+    // eslint-disable-next-line quote-props
+    '10': '1y5sd7uTfZDLF1J2Z75r9eLGM27TYoS8NFjqi_k0QODQ',
+    // eslint-disable-next-line quote-props
+    '11': '1YRpY7FLwnUYW8_1eEanLaBmv8BiPlWhc5_8H3-cfHpE'
+  }
+
+  const objectDocenteCur = {
+    Doc_Amanda: '1XB1-v-m9lBm1scgXfX1sn7XK2OAmjsX4AVVHZUZ6Jhw',
+    Doc_Angela: '1kwM2CVB8Rby7PGHdZhq9xXZ7KhAOSQRueuXxL8JpPKQ',
+    Doc_Daniela: '1sOq0XaFy7_fJlOZQnWAFqJnFtyJq4NJUyQffMV-c6J8',
+    Doc_Erika: '1XZGOUBAg6lOViB23YMpB3zLvXZSbxcygxJhTja5AiLU',
+    Doc_Ferney: '18t8aEDKxRe9m6MydLV4VQlyNZc6LSQy8Ul5OvhtZVsI',
+    Doc_John: '1GUZJvDYGAdy4H8UpNFPVJTO-gUb0Nd8yLpf7J90tauI',
+    Doc_JuanPablo: '1SlCg1RXGajBBe4HEGR3Vda2kUd_lcM0D3atuzrccXdY',
+    Doc_July: '1L9EUDudzmn8l0_9wdXkE-g_uNWwoCl5fDfPeX217-E0',
+    Doc_Karyna: '1sejVpoJcWCsGCl44UPnHtf9Dk5esjlbbh2KF7Xln9ng',
+    Doc_Katherine: 'hqPA5kedWn7yommZgBVK68JKs9Vpz_ppeQHwKY',
+    Doc_Kevin: '1aB8F9iyw6V7J5O2aSI9fjrnovMqDT3zJ6aLA9id6X5w',
+    Doc_Luisa: '13Ymh4ornfqJTfA4SDrqRGjtyGgIxLR5VRG-XAJFwDVI',
+    Doc_Mateo: '1DldUG-_A_baDFpF5IbnJeP72sG1MxYagV4ZJn7A9oxQ',
+    Doc_Oscar: '1zIJSceuJSs9sh3E5GPgiEef87AHc5gBRXr_bfbdbN7k',
+    Doc_Patricia: '1oOVTRGI6y2o4qevMv8nzbdPurAjO5q8AZWqoLMulxY8',
+    Doc_SorJaneth: '14cMmtnrNBf900U7TrXm1zO28QfJkRVVgtF4JDUT0HUk',
+    Doc_Victoria: '1LANDaIZfbe9oGAJitER2Mpf0azZkcV6lvuwYQDfu6c4'
+  }
+
+  const objectPeriodoCur = {
+    '01': 5,
+    '02': 35,
+    '03': 65,
+    '04': 95,
+    Final: 125
+  }
+
+  let docenteCur = numeros.idCalculadoraDoc
+  let asignaturaGraCur = numeros.AsignaturaGrad
+  let PeriodoCur = numeros.periodoGrad
+  let GradoCur = numeros.grado
+  let MateriaGradoCur = numeros.materiaGrado
+
+  const idDocenteCur = objectDocenteCur[docenteCur] ?? 'N/A'
+  let idPeriodoCur = objectPeriodoCur[PeriodoCur] ?? 'N/A'
+  const idGrado = objectGrado[GradoCur] ?? 'N/A'
+
+  const calculadoraDoc = SpreadsheetApp.openById(`${idDocenteCur}`).getSheetByName('Análisis')
+  let dataCalculadoraDoc = calculadoraDoc.getDataRange().getValues()
+  let arrayasignaturaGra = dataCalculadoraDoc[3]
+  let celdaColumnaAsig = arrayasignaturaGra.indexOf(asignaturaGraCur)
+
+  let dataColum = calculadoraDoc.getRange(idPeriodoCur, celdaColumnaAsig + 1, 7).getValues()
+
+  const planillasDoc = SpreadsheetApp.openById(idGrado).getSheetByName('Análisis')
+  let dataPlanillaDoc = planillasDoc.getDataRange().getValues()
+
+  let arrayAsignaturaDoc = dataPlanillaDoc[3]
+  const arrayAsignatutasDoc = MateriaGradoCur.split('_')
+  let materiaCur = arrayAsignatutasDoc[0]
+  let fis = arrayAsignatutasDoc[1]
+  if (fis === 'FIS') {
+    materiaCur = materiaCur + '_' + fis
+  }
+
+  let celdaColumnaAsigDoc = arrayAsignaturaDoc.indexOf(materiaCur)
+
+  for (let i = 0; i < 7; i++) {
+    planillasDoc.getRange(idPeriodoCur, celdaColumnaAsigDoc + 1).setValue(dataColum[i])
+    idPeriodoCur += 1
+  }
 }

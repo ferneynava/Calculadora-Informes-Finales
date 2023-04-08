@@ -14,17 +14,39 @@
               </label>
               <input class="IDnotas" id="InputID" type="text" placeholder="ID">
 
-              <label for="InputIDcal">
-                Ingrese la clave (ID) calculadora Docente 
-              </label>
-              <input class="IDcalculadora" id="InputIDcal" type="text" placeholder="ID">
-          
+              <div class = "container_SelectDocente">
+                <label for="InputIDcal">
+                  Docente 
+                </label>
+                <select class="IDcalculadora" name="calculadora" id="InputIDcal">
+                  <optgroup label="Docente">
+                    <option>Doc_Amanda</option>
+                    <option>Doc_Angela</option>
+                    <option>Doc_Daniela</option>
+                    <option>Doc_Erika</option>
+                    <option>Doc_Ferney</option>
+                    <option>Doc_John</option>
+                    <option>Doc_JuanPablo</option>
+                    <option>Doc_July</option>
+                    <option>Doc_Karyna</option>
+                    <option>Doc_Katherine</option>
+                    <option>Doc_Kevin</option>
+                    <option>Doc_Luisa</option>
+                    <option>Doc_Mateo</option>
+                    <option>Doc_Oscar</option>
+                    <option>Doc_Patricia</option>
+                    <option>Doc_SorJaneth</option>
+                    <option>Doc_Victoria</option>
+                  </optgroup>
+                </select>
+              </div>
+
               <div class = "container_SelectPeriodo">
                 <label for= "InputPeriodo">
                   Periodo
                 </label>
                 <select class="Periodo" name="Periodo" id="InputPeriodo">
-                  <optgroup label="Materia_Grado">
+                  <optgroup label="Periodo">
                     <option>01</option>
                     <option>02</option>
                     <option>03</option>
@@ -231,6 +253,9 @@
               </div>
                 
               <button class = "enviar" onclick="docente()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
                 Enviar
               </button>
             </form>
@@ -238,13 +263,166 @@
           
           <div class="contenedor__Evaluación">
               <h1>Evaluaciones</h1>
+              <form class = "formIDplanilla" onsubmit="return false">
+                <label for="InputIDplanilla">
+                  Ingrese la clave (ID) de tu planilla de notas
+                </label>
+                <input class="IDtuplanilla" id="InputIDplanilla" type="text" placeholder="ID">
+
+                <div class = "container_SelectPeriodo">
+                  <label for= "InputPeriodoEva">
+                    Periodo
+                  </label>
+                  <select class="PeriodoEva" name="Periodo" id="InputPeriodoEva">
+                    <optgroup label="Periodo">
+                      <option>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                      <option>04</option>
+                      <option>Final</option>
+                    </optgroup>
+                  </select>
+                </div>
+                
+                <div class = "container_SelectGrado">
+                  <label for="InputMateriaEva">
+                    Materia y grado 
+                  </label>
+                  <select class="MateriaGradoEva" name="Materia_Grado" id="InputMateriaEva">
+                    <optgroup label="Materia_Grado">
+                      <option>MAT_03</option>
+                      <option>MAT_04</option>
+                      <option>MAT_05</option>
+                      <option>MAT_06</option>
+                      <option>MAT_07</option>
+                      <option>MAT_08</option>
+                      <option>MAT_09</option>
+                      <option>MAT_10</option>
+                      <option>MAT_11</option> 
+                      <option>LC_03</option> 
+                      <option>LC_04</option> 
+                      <option>LC_05</option> 
+                      <option>LC_06</option>
+                      <option>LC_07</option>
+                      <option>LC_08</option>
+                      <option>LC_09</option>
+                      <option>LC_10</option>
+                      <option>LC_11</option> 
+                      <option>SOC_03</option>
+                      <option>SOC_04</option>  
+                      <option>SOC_05</option>
+                      <option>SOC_06</option>
+                      <option>SOC_07</option>
+                      <option>SOC_08</option>
+                      <option>SOC_09</option>
+                      <option>SOC_10</option>
+                      <option>SOC_11</option>
+                      <option>ING_03</option>
+                      <option>ING_04</option>
+                      <option>ING_05</option>
+                      <option>ING_06</option>
+                      <option>ING_07</option>
+                      <option>ING_08</option>
+                      <option>ING_09</option>
+                      <option>ING_10</option>
+                      <option>ING_11</option>
+                      <option>CN_03</option>
+                      <option>CN_04</option> 
+                      <option>CN_05</option> 
+                      <option>CN_06</option> 
+                      <option>CN_07</option> 
+                      <option>CN_08</option>
+                      <option>CN_09</option>  
+                      <option>CN_10</option> 
+                      <option>CN_11</option> 
+                    </optgroup>
+                  </select>
+                  <label for="InputEstudentEva">
+                    Número de estudiantes
+                  </label>
+                  <input class="InputEstudent" id="InputEstudentEva" type="number" placeholder="16">
+                </div>
+
+                <label for="InputColum">
+                  Columna donde se 
+                  encuentran las notas de las evaluaciones. 
+                </label>
+                <input class="Colum" id="InputColum" type="text" placeholder="G">
+
+                <label for="InputFila">
+                  Fila desde donde 
+                  inicia la primera nota de la evaluación. 
+                </label>
+                <input class="Fila" id="InputFila" type="number" placeholder="3">
+
+                <button class = "enviar" onclick="evaluacion()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                    Enviar
+                </button>
+              </form>
+          </div>
+
+          <div class="contenedor__Curso">
+            <h1>Curso</h1>
+            <form class = "formIDplanilla" onsubmit="return false">
+              <div class = "container_SelectDocente">
+                <label for="InputIDcalDocAna">
+                  Docente 
+                </label>
+                <select class="IDcalculadoraCurso" name="Analisis" id="InputIDcalDocAna">
+                  <optgroup label="Docente">
+                    <option>Doc_Amanda</option>
+                    <option>Doc_Angela</option>
+                    <option>Doc_Daniela</option>
+                    <option>Doc_Erika</option>
+                    <option>Doc_Ferney</option>
+                    <option>Doc_John</option>
+                    <option>Doc_JuanPablo</option>
+                    <option>Doc_July</option>
+                    <option>Doc_Karyna</option>
+                    <option>Doc_Katherine</option>
+                    <option>Doc_Kevin</option>
+                    <option>Doc_Luisa</option>
+                    <option>Doc_Mateo</option>
+                    <option>Doc_Oscar</option>
+                    <option>Doc_Patricia</option>
+                    <option>Doc_SorJaneth</option>
+                    <option>Doc_Victoria</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class = "container_SelectGradoDoc">
+                <label for= "InputGrado">
+                  Grado
+                </label>
+                <select class="cursoGra" name="Grado" id="InputGrado">
+                  <optgroup label="Grado">
+                    <option>00_K</option>
+                    <option>00_PK</option>
+                    <option>00_T</option>
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>10</option>
+                    <option>11</option>
+                  </optgroup>
+                </select>
+              </div>
 
               <div class = "container_SelectPeriodo">
-                <label for= "InputPeriodo">
+                <label for= "InputPeriodoCur">
                   Periodo
                 </label>
-                <select class="PeriodoEva" name="Periodo" id="InputPeriodo">
-                  <optgroup label="Materia_Grado">
+                <select class="PeriodoCur" name="Periodo" id="InputPeriodoCur">
+                  <optgroup label="Periodo">
                     <option>01</option>
                     <option>02</option>
                     <option>03</option>
@@ -254,12 +432,13 @@
                 </select>
               </div>
               
-              <div class = "container_SelectGrado">
-                <label for="InputMateria">
+              <div class = "container_SelectMatGrado">
+                <label for="InputMateriaCur">
                   Materia y grado 
                 </label>
-                <select class="MateriaGradoEva" name="Materia_Grado" id="InputMateria">
+                <select class="MateriaGradoCur" name="Materia_Grado" id="InputMateriaCur">
                   <optgroup label="Materia_Grado">
+                    <option>MAT_02</option>
                     <option>MAT_03</option>
                     <option>MAT_04</option>
                     <option>MAT_05</option>
@@ -268,25 +447,106 @@
                     <option>MAT_08</option>
                     <option>MAT_09</option>
                     <option>MAT_10</option>
-                    <option>MAT_11</option> 
+                    <option>MAT_11</option>
+                    <option>TEC_PK</option>
+                    <option>TEC_K</option> 
+                    <option>TEC_T</option> 
+                    <option>TEC_01</option> 
+                    <option>TEC_02</option> 
+                    <option>TEC_03</option> 
+                    <option>TEC_04</option> 
+                    <option>TEC_05</option> 
+                    <option>TEC_06</option> 
+                    <option>TEC_07</option> 
+                    <option>TEC_08</option> 
+                    <option>TEC_09</option> 
+                    <option>LC_02</option> 
                     <option>LC_03</option> 
                     <option>LC_04</option> 
                     <option>LC_05</option> 
-                    <option>LC_06</option>
-                    <option>LC_07</option>
-                    <option>LC_08</option>
-                    <option>LC_09</option>
-                    <option>LC_10</option>
-                    <option>LC_11</option> 
+                    <option>ETIC_02</option> 
+                    <option>ETIC_03</option> 
+                    <option>ETIC_04</option> 
+                    <option>ETIC_05</option> 
+                    <option>ETIC_06</option> 
+                    <option>ETIC_07</option> 
+                    <option>ETIC_08</option> 
+                    <option>ETIC_09</option> 
+                    <option>ART_PK</option>
+                    <option>ART_K</option>
+                    <option>ART_T</option>
+                    <option>ART_01</option>  
+                    <option>ART_02</option>  
+                    <option>ART_03</option> 
+                    <option>ART_04</option>   
+                    <option>ART_05</option>
+                    <option>ART_06</option>      
+                    <option>ART_07</option>  
+                    <option>ART_08</option> 
+                    <option>ART_09</option>   
+                    <option>ART_10</option> 
+                    <option>ART_11</option>   
+                    <option>SOC_02</option>   
                     <option>SOC_03</option>
                     <option>SOC_04</option>  
                     <option>SOC_05</option>
                     <option>SOC_06</option>
                     <option>SOC_07</option>
                     <option>SOC_08</option>
-                    <option>SOC_09</option>
-                    <option>SOC_10</option>
-                    <option>SOC_11</option>
+                    <option>SOC_09</option>  
+                    <option>INV_10</option>  
+                    <option>INV_11</option>  
+                    <option>E_FIS_PK</option>  
+                    <option>E_FIS_K</option>
+                    <option>E_FIS_T</option>   
+                    <option>E_FIS_01</option>   
+                    <option>E_FIS_02</option>   
+                    <option>E_FIS_03</option>      
+                    <option>E_FIS_04</option>  
+                    <option>E_FIS_05</option>    
+                    <option>E_FIS_06</option> 
+                    <option>E_FIS_07</option> 
+                    <option>E_FIS_08</option> 
+                    <option>E_FIS_09</option>
+                    <option>E_FIS_10</option> 
+                    <option>E_FIS_11</option>  
+                    <option>SCI_02</option> 
+                    <option>SCI_03</option>   
+                    <option>SCI_04</option> 
+                    <option>SCI_05</option>  
+                    <option>SCI_06</option>
+                    <option>SCI_07</option>
+                    <option>SCI_08</option>
+                    <option>SCI_09</option> 
+                    <option>MATH_02</option>
+                    <option>MATH_03</option>
+                    <option>MATH_04</option> 
+                    <option>MATH_05</option> 
+                    <option>PL_06</option>        
+                    <option>PL_07</option> 
+                    <option>PL_08</option> 
+                    <option>PL_09</option> 
+                    <option>CN_02</option> 
+                    <option>CN_03</option>
+                    <option>CN_04</option> 
+                    <option>CN_05</option> 
+                    <option>BIO_06</option> 
+                    <option>BIO_07</option>
+                    <option>BIO_08</option> 
+                    <option>BIO_09</option>  
+                    <option>LC_01</option>  
+                    <option>MAT_01</option> 
+                    <option>CN_PK</option> 
+                    <option>CN_K</option>
+                    <option>CN_01</option>
+                    <option>SOC_01</option>
+                    <option>SCI_01</option>
+                    <option>MATH_01</option>
+                    <option>ETIC_PK</option>
+                    <option>ETIC_K</option>
+                    <option>ETIC_T</option>
+                    <option>ETIC_01</option>
+                    <option>ING_02</option>
                     <option>ING_03</option>
                     <option>ING_04</option>
                     <option>ING_05</option>
@@ -296,92 +556,201 @@
                     <option>ING_09</option>
                     <option>ING_10</option>
                     <option>ING_11</option>
-                    <option>CN_03</option>
-                    <option>CN_04</option> 
-                    <option>CN_05</option> 
-                    <option>CN_06</option> 
-                    <option>CN_07</option> 
-                    <option>CN_08</option>
-                    <option>CN_09</option>  
-                    <option>CN_10</option> 
-                    <option>CN_11</option> 
+                    <option>LC_06</option>
+                    <option>LC_07</option>
+                    <option>LC_08</option>
+                    <option>LC_09</option>
+                    <option>LC_10</option>
+                    <option>LC_11</option>
+                    <option>FIS_10</option>
+                    <option>FIS_11</option>
+                    <option>QUI_10</option>
+                    <option>QUI_11</option>
+                    <option>ICFES_10</option>
+                    <option>ICFES_11</option>
+                    <option>MUS_PK</option>
+                    <option>MUS_K</option>
+                    <option>MUS_T</option>
+                    <option>MUS_01</option>
+                    <option>MUS_02</option>
+                    <option>MUS_03</option>
+                    <option>MUS_04</option>
+                    <option>MUS_05</option>
+                    <option>MUS_06</option>
+                    <option>MUS_07</option>
+                    <option>MUS_08</option>
+                    <option>MUS_09</option>
+                    <option>MUS_10</option>
+                    <option>MUS_11</option>
+                    <option>LC_PK</option>
+                    <option>LC_K</option>
+                    <option>LC_T</option>
+                    <option>MAT_PK</option>
+                    <option>MAT_K</option>
+                    <option>MAT_T</option>
+                    <option>SOC_PK</option>
+                    <option>SOC_K</option>
+                    <option>ING_PK</option>
+                    <option>ING_K</option>
+                    <option>ING_T</option>
+                    <option>ING_01</option>
+                    <option>SCI_PK</option>
+                    <option>SCI_K</option>
+                    <option>SCI_T</option>
+                    <option>MATH_PK</option>
+                    <option>MATH_K</option>
+                    <option>MATH_T</option>
+                    <option>ERE_PK</option>
+                    <option>ERE_K</option>
+                    <option>ERE_T</option>
+                    <option>ERE_01</option>
+                    <option>ERE_02</option>
+                    <option>ERE_03</option>
+                    <option>ERE_04</option>
+                    <option>ERE_05</option>
+                    <option>ERE_06</option>
+                    <option>ERE_07</option>
+                    <option>SOC_10</option>
+                    <option>SOC_11</option>
+                    <option>FILO_06</option>
+                    <option>FILO_07</option>
+                    <option>FILO_08</option>
+                    <option>FILO_09</option>
+                    <option>FILO_10</option>
+                    <option>FILO_11</option>
+                    <option>ETIC_10</option>
+                    <option>ETIC_11</option>
+                    <option>ERE_08</option>
+                    <option>ERE_09</option>
+                    <option>ERE_10</option>
+                    <option>ERE_11</option>
                   </optgroup>
                 </select>
               </div>
-                
-              <form class = "formIDplanilla" onsubmit="return false">
-                <label for="InputIDplanilla">
-                  Ingrese la clave (ID) de tu planilla de notas
-                </label>
-                <input class="IDtuplanilla" id="InputIDplanilla" type="text" placeholder="ID">
 
-                <label for="InputIDcalEva">
-                  Ingrese la clave (ID) calculadora Evaluacion
-                </label>
-                <input class="IDcalculadoraEva" id="InputIDcalEva" type="text" placeholder="ID">
-                
-              <label for="InputColum">
-                Escriba la letra de la columna donde se 
-                encuentra las notas de las evaluaciones. 
-              </label>
-              <input class="Colum" id="InputColum" type="text" placeholder="G">
-
-              <label for="InputFila">
-                Seleccione el número de la fila desde donde 
-                inicia la primera nota de la evaluación. 
-              </label>
-              <input class="Fila" id="InputFila" type="number" placeholder="3">
-
-                
-                <button class = "enviar" onclick="evaluacion()">
+              <button class = "enviar" onclick="curso()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="m9 18 6-6-6-6"/>
+                </svg>
                   Enviar
-                </button>
-              </form>
-          </div>
+              </button>
+            </form>
         </div>
+        </div>
+
+        <footer>
+          <div class="footer__container">
+            Creado por Doc.Ferney Nava 💚.
+          </div>
+          <ul>
+            <li>
+              <a href="https://www.linkedin.com/in/ferney-alexander-nava-trujillo-0478a8118/" title="Linkedin" target="_blank">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1.2rem" width="1.2rem" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ferneynava" title="Github" target="_blank">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" height="1.2rem" width="1.2rem" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+              </a>
+            </li>
+          </ul>
+        </footer>
         
     <script>
       function docente(){
-        const asignatura = document.querySelector(".MateriaGrado");
-        const periodo = document.querySelector(".Periodo");
-        const idNotas = document.querySelector(".IDnotas");
-        const idCalculadora = document.querySelector(".IDcalculadora"); 
+        const asignatura = document.querySelector(".MateriaGrado")
+        const periodo = document.querySelector(".Periodo")
+        const idNotas = document.querySelector(".IDnotas")
+        const idCalculadora = document.querySelector(".IDcalculadora")
+        const h1va = document.querySelector(".error__h1")
 
-        let asignaturas = asignatura.options[asignatura.selectedIndex];
-        let selectedAsignaturas = asignaturas.text;
+        let docentes = idCalculadora.options[idCalculadora.selectedIndex]
+        let docente = docentes.text
 
-        let periodos = periodo.options[periodo.selectedIndex];
-        let selectedPeriodo = periodos.text;
+        let asignaturas = asignatura.options[asignatura.selectedIndex]
+        let selectedAsignaturas = asignaturas.text
 
-        let IDnotas = idNotas.value;  
-        let IDcalculadora = idCalculadora.value;
+        let periodos = periodo.options[periodo.selectedIndex]
+        let selectedPeriodo = periodos.text
 
+        let IDnotas = idNotas.value
+        
         let objeto = {
           asignatura: selectedAsignaturas,
           periodo: selectedPeriodo,
           idnotas: IDnotas,
-          idcalculadora: IDcalculadora
+          idCalculadora: docente,
+          error: "Error"
         }
-        google.script.run.docentes(objeto);
+        google.script.run.docentes(objeto)
       }
 
       function evaluacion(){
+        const idNotasEval = document.querySelector(".IDtuplanilla") 
         const periodoEva = document.querySelector(".PeriodoEva")
-        const asignaturaEva = document.querySelector(".MateriaGradoEva");
+        const asignaturaEva = document.querySelector(".MateriaGradoEva")
+        const colum = document.querySelector(".Colum")
+        const fila = document.querySelector(".Fila")
+        const numeroEstudiantes = document.querySelector(".InputEstudent")
+        
+        let idNotasEva = idNotasEval.value
+        
+        let periodosEva = periodoEva.options[periodoEva.selectedIndex]
+        let selectedPeriodoEva = periodosEva.text
 
-        let periodosEva = periodoEva.options[periodoEva.selectedIndex];
-        let selectedPeriodoEva = periodosEva.text;
+        let asignaturasEva = asignaturaEva.options[asignaturaEva.selectedIndex]
+        let selectedAsignaturasEva = asignaturasEva.text
 
-        let asignaturasEva = asignaturaEva.options[asignaturaEva.selectedIndex];
-        let selectedAsignaturasEva = asignaturasEva.text;
+        let numeroEstudiante = numeroEstudiantes.value
+        let columnas = colum.value
+        let filas = fila.value
 
+        
         let objetoEva = {
           periodoEva: selectedPeriodoEva,
-          asignaturaEva: selectedAsignaturasEva
+          asignaturaEva: selectedAsignaturasEva,
+          idnotasEva: idNotasEva,
+          columa: columnas,
+          fila: filas,
+          numeroEst: numeroEstudiante
         }
 
-        google.script.run.evaluaciones(objetoEva);
+        google.script.run.evaluaciones(objetoEva)
       } 
+      
+      function curso(){
+        const idCalculadoraDoc = document.querySelector(".IDcalculadoraCurso")
+        const AsignaturaGrad = document.querySelector(".MateriaGradoCur")
+        const periodoGrad = document.querySelector(".PeriodoCur")
+        const grado = document.querySelector(".cursoGra")
+        const materiaGrado = document.querySelector(".MateriaGradoCur") 
+
+        let docentesCurso = idCalculadoraDoc.options[idCalculadoraDoc.selectedIndex]
+        let docenteCurso = docentesCurso.text
+
+        let asignaturasGrados = AsignaturaGrad.options[AsignaturaGrad.selectedIndex]
+        let asignaturaGrados = asignaturasGrados.text
+
+        let periodosCur = periodoGrad.options[periodoGrad.selectedIndex]
+        let selectedPeriodoCur = periodosCur.text
+
+        let gradosCur = grado.options[grado.selectedIndex]
+        let selectedGrado = gradosCur.text
+
+        let materiaCur = materiaGrado.options[materiaGrado.selectedIndex]
+        let selectedMateria = materiaCur.text
+
+        let objetoCur = {
+          idCalculadoraDoc: docenteCurso,
+          AsignaturaGrad: asignaturaGrados,
+          periodoGrad: selectedPeriodoCur,
+          grado: selectedGrado,
+          materiaGrado: selectedMateria
+        }
+
+          google.script.run.curso(objetoCur)          
+      }
+    
     </script>
   </body>
 </html>
