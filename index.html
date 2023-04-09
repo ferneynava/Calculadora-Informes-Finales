@@ -657,66 +657,114 @@
         </footer>
         
     <script>
-      function docente(){
-        const asignatura = document.querySelector(".MateriaGrado")
-        const periodo = document.querySelector(".Periodo")
-        const idNotas = document.querySelector(".IDnotas")
-        const idCalculadora = document.querySelector(".IDcalculadora")
-        const h1va = document.querySelector(".error__h1")
+function docente(){
+const asignatura = document.querySelector(".MateriaGrado")
+const periodo = document.querySelector(".Periodo")
+const idNotas = document.querySelector("#InputID")
+const idCalculadora = document.querySelector(".IDcalculadora")
+const h1va = document.querySelector(".error__h1")
 
-        let docentes = idCalculadora.options[idCalculadora.selectedIndex]
-        let docente = docentes.text
+let docentes = idCalculadora.options[idCalculadora.selectedIndex]
+let docente = docentes.text
 
-        let asignaturas = asignatura.options[asignatura.selectedIndex]
-        let selectedAsignaturas = asignaturas.text
+let asignaturas = asignatura.options[asignatura.selectedIndex]
+let selectedAsignaturas = asignaturas.text
 
-        let periodos = periodo.options[periodo.selectedIndex]
-        let selectedPeriodo = periodos.text
+let periodos = periodo.options[periodo.selectedIndex]
+let selectedPeriodo = periodos.text
 
-        let IDnotas = idNotas.value
-        
-        let objeto = {
-          asignatura: selectedAsignaturas,
-          periodo: selectedPeriodo,
-          idnotas: IDnotas,
-          idCalculadora: docente,
-          error: "Error"
-        }
-        google.script.run.docentes(objeto)
-      }
+let IDnotas
+if (idNotas.value === ''){
+  alert("Ingresar la clave ID")
+  const correidPla = idNotas.classList.toggle('IDnotas')
+  if (correidPla){
+    idNotas.classList.remove('IDnotas')
+  }
+  idNotas.classList.add('errorIDnotas')
+} else {
+  const erroridPla = idNotas.classList.toggle('errorIDnotas')
+  if (erroridPla){
+    idNotas.classList.remove('errorIDnotas')
+  }
+  idNotas.classList.add('IDnotas')
+  IDnotas = idNotas.value
+}
 
-      function evaluacion(){
-        const idNotasEval = document.querySelector(".IDtuplanilla") 
-        const periodoEva = document.querySelector(".PeriodoEva")
-        const asignaturaEva = document.querySelector(".MateriaGradoEva")
-        const colum = document.querySelector(".Colum")
-        const fila = document.querySelector(".Fila")
-        const numeroEstudiantes = document.querySelector(".InputEstudent")
-        
-        let idNotasEva = idNotasEval.value
-        
-        let periodosEva = periodoEva.options[periodoEva.selectedIndex]
-        let selectedPeriodoEva = periodosEva.text
 
-        let asignaturasEva = asignaturaEva.options[asignaturaEva.selectedIndex]
-        let selectedAsignaturasEva = asignaturasEva.text
+let objeto = {
+  asignatura: selectedAsignaturas,
+  periodo: selectedPeriodo,
+  idnotas: IDnotas,
+  idCalculadora: docente,
+  error: "Error"
+}
+    google.script.run.docentes(objeto)
+}
 
-        let numeroEstudiante = numeroEstudiantes.value
-        let columnas = colum.value
-        let filas = fila.value
+function evaluacion(){
 
-        
-        let objetoEva = {
-          periodoEva: selectedPeriodoEva,
-          asignaturaEva: selectedAsignaturasEva,
-          idnotasEva: idNotasEva,
-          columa: columnas,
-          fila: filas,
-          numeroEst: numeroEstudiante
-        }
+let exprLetras = /^[a-zA-Z]/
+let exprNada = /^[]/
+const idNotasEval = document.querySelector('#InputIDplanilla')
+const periodoEva = document.querySelector('.PeriodoEva')
+const asignaturaEva = document.querySelector('.MateriaGradoEva')
+const colum = document.querySelector('#InputColum')
+const fila = document.querySelector('.Fila')
+const numeroEstudiantes = document.querySelector('.InputEstudent')
 
-        google.script.run.evaluaciones(objetoEva)
-      } 
+let idNotasEva
+if (idNotasEval.value === ''){
+  alert("Ingresar la clave ID")
+  const correidNotasEval = idNotasEval.classList.toggle('IDtuplanilla')
+  if (correidNotasEval){
+    idNotasEval.classList.remove('IDtuplanilla')
+  }
+  idNotasEval.classList.add('errorIDtuplanilla')
+} else {
+  const errorNotasEval = idNotasEval.classList.toggle('errorIDtuplanilla')
+  if (errorNotasEval){
+    idNotasEval.classList.remove('errorIDtuplanilla')
+  }
+  idNotasEval.classList.add('IDtuplanilla')
+  idNotasEva = idNotasEval.value
+}
+
+let periodosEva = periodoEva.options[periodoEva.selectedIndex]
+let selectedPeriodoEva = periodosEva.text
+
+let asignaturasEva = asignaturaEva.options[asignaturaEva.selectedIndex]
+let selectedAsignaturasEva = asignaturasEva.text
+
+let numeroEstudiante = numeroEstudiantes.value
+
+let columnas
+
+if (exprLetras.test(colum.value)) {
+  const isError = colum.classList.toggle('ErrorInputColum')
+  if (isError) {
+    colum.classList.remove('ErrorInputColum')
+  }
+  colum.classList.add('Colum')
+  columnas = colum.value
+} else {
+  colum.classList.remove('Colum')
+  colum.classList.add('ErrorInputColum')
+  alert("Solo acepta Letras")
+}
+
+let filas = fila.value
+
+let objetoEva = {
+  periodoEva: selectedPeriodoEva,
+  asignaturaEva: selectedAsignaturasEva,
+  idnotasEva: idNotasEva,
+  columa: columnas,
+  fila: filas,
+  numeroEst: numeroEstudiante
+}
+
+google.script.run.evaluaciones(objetoEva)
+} 
       
       function curso(){
         const idCalculadoraDoc = document.querySelector(".IDcalculadoraCurso")

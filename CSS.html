@@ -71,12 +71,25 @@ label {
     color: var(--white);
 }
 
-.formIDcal .IDnotas  {
+.IDnotas {
     text-align: var(--center);
     background: transparent;
     margin: 11px;
     border-radius: 10px;
     border: 2px solid var(--borderColor);
+    height: 25px;
+    width: 26rem;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Carme', sans-serif;
+}
+
+.errorIDnotas {
+    text-align: var(--center);
+    background: transparent;
+    margin: 11px;
+    border-radius: 10px;
+    border: 2px solid red;
     height: 25px;
     width: 26rem;
     outline: none;
@@ -236,7 +249,7 @@ input::placeholder {
              -28px -28px 52px #2c4077;
 }
 
-.formIDplanilla .IDtuplanilla {
+.IDtuplanilla {
     text-align: var(--center);
     background: transparent;
     margin: 11px;
@@ -250,7 +263,21 @@ input::placeholder {
     color: var(--white);
 }
 
-.formIDplanilla .Colum{
+.errorIDtuplanilla {
+    text-align: var(--center);
+    background: transparent;
+    margin: 11px;
+    border-radius: 10px;
+    border: 2px solid red;
+    height: 25px;
+    width: 26rem;
+    outline: none;
+    font-family: 'Carme', sans-serif;
+    font-size: 16px;
+    color: var(--white);
+}
+
+.Colum{
     text-align: var(--center);
     background: transparent;
     margin: 11px;
@@ -263,6 +290,21 @@ input::placeholder {
     font-size: 16px;
     font-weight: bold;
     color: var(--white);
+}
+
+.ErrorInputColum {
+    text-align: var(--center);
+    background: transparent;
+    margin: 11px;
+    border-radius: 10px;
+    height: 25px;
+    width: 4rem;
+    outline: none;
+    font-family: 'Carme', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--white);
+    border: 2px solid red;
 }
 
 .formIDplanilla .Fila{
