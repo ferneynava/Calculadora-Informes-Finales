@@ -42,7 +42,7 @@ body{
     display: grid;
     place-content: var(--center);
     grid-template-columns: 29rem 35rem 25rem;
-    height: 50rem;
+    height: 56rem;
     gap: 2rem;
     width: 99rem;
 }
@@ -69,6 +69,7 @@ label {
     text-align: var(--center);
     margin: 11px;
     color: var(--white);
+    padding: 6px;
 }
 
 .IDnotas {
@@ -127,7 +128,14 @@ input::placeholder {
     margin: 0 52px;
 }
 
-.container_SelectGrado .InputEstudent{
+.container_MatGrado{
+    display: flex;
+    justify-content: var(--center);
+    align-items: var(--center);
+    margin: 0 52px;
+}
+
+.container_MatGrado .InputEstudent{
     text-align: var(--center);
     background: transparent;
     margin: 11px;
@@ -167,6 +175,30 @@ input::placeholder {
 }
 
 .container_SelectGrado select{
+    color: var(--white);
+    height: 30px;
+    width: 6rem;
+    margin: 4px;
+    border-radius: 10px;
+    font-family: 'Carme', sans-serif;
+    font-size: 15px;
+    background: var(--cafe);
+    border: 2px solid var(--borderColor);
+}
+
+.container_MatGrado .MateriaEva{
+    color: var(--white);
+    height: 30px;
+    width: 6rem;
+    margin: 11px;
+    border-radius: 10px;
+    font-family: 'Carme', sans-serif;
+    font-size: 15px;
+    background: var(--cafe);
+    border: 2px solid var(--borderColor);
+}
+
+.container_SelectGrado .gradoEva{
     color: var(--white);
     height: 30px;
     width: 6rem;

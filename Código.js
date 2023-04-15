@@ -216,19 +216,33 @@ function docentes(numero) {
   }
 }
 
+function hojasData(numeros) {
+  const id = numeros.inputId
+  const datos = SpreadsheetApp.openById(`${id}`)
+  let hojas = datos.getSheets()
+  let totalArray = hojas.length
+
+  let array = []
+  for (let i = 0; i < totalArray; i++) {
+    let hojasReco = hojas[i].getName()
+    array.push(hojasReco)
+  }
+  return array
+}
+
 function evaluaciones(numeros) {
   let idPlanillaNotas = numeros.idnotasEva
   let materiaGrado = numeros.asignaturaEva
+  let evaMateria = numeros.EvMateria
+  let evaGrado = numeros.EvGrados
   let columna = numeros.columa
   let numeroEs = numeros.numeroEst
   let mayusColumna = columna.toUpperCase()
   let fila = numeros.fila
 
-  const arrayAsignatutas = materiaGrado.split('_')
-  let grados = arrayAsignatutas[1]
-  let materia = arrayAsignatutas[0]
-
-  let evalMateria = 'Eva_' + materia
+  const arrayevaMateria = evaMateria.split('_')
+  let Eva = arrayevaMateria[0]
+  let Mate = arrayevaMateria[1]
 
   const objectPeriodosEva = {
     '01': '1P',
@@ -238,6 +252,8 @@ function evaluaciones(numeros) {
     Final: '5P'
   }
 
+  let materiaPlaEva = Mate + '_' + evaGrado
+
   const objectEvaMaterias = {
     Eva_MAT: '1cyDyae-stuOSTLje0npIokayvJEPZzTPxpB-jhTIp38',
     Eva_SOC: '17fN-tEadh6WLUHXGzAZcVI7uN0Lv9F_Slv8g--CM8xo',
@@ -246,32 +262,16 @@ function evaluaciones(numeros) {
     Eva_CN: '14xV5uEn42TSzsumBxl1OrKYpQbV52sqdIl7TFq8Og1I'
   }
 
-  const objectGrado = {
-    '03': '3',
-    '04': '4',
-    '05': '5',
-    '06': '6',
-    '07': '7',
-    '08': '8',
-    '09': '9',
-    // eslint-disable-next-line quote-props
-    '10': '10',
-    // eslint-disable-next-line quote-props
-    '11': '11'
-  }
+  const planillaNotas = SpreadsheetApp.openById(idPlanillaNotas).getSheetByName(materiaGrado)
 
-  let grado = objectGrado[grados]
-  let nombreHoja = grado + ' ' + materia
-  const planillaNotas = SpreadsheetApp.openById(idPlanillaNotas).getSheetByName(nombreHoja)
-
-  let hojaEva = objectEvaMaterias[evalMateria]
+  let hojaEva = objectEvaMaterias[evaMateria]
 
   const periodoEvaIngre = numeros.periodoEva
   const periodoEva = objectPeriodosEva[periodoEvaIngre] ?? 'N/A'
   const calculadoraEva = SpreadsheetApp.openById(hojaEva).getSheetByName(`Datos ${periodoEva}`)
   let dataCalculadoraEva = calculadoraEva.getDataRange().getValues()
   let arrayAsignaturaEva = dataCalculadoraEva[2]
-  let celdaColumnaAsig = arrayAsignaturaEva.indexOf(materiaGrado)
+  let celdaColumnaAsig = arrayAsignaturaEva.indexOf(materiaPlaEva)
 
   let filaNum = Number(fila)
   let c5 = 9

@@ -286,62 +286,51 @@
                 
                 <div class = "container_SelectGrado">
                   <label for="InputMateriaEva">
-                    Materia y grado 
+                    Seleccione tu hoja de calculo 
                   </label>
                   <select class="MateriaGradoEva" name="Materia_Grado" id="InputMateriaEva">
-                    <optgroup label="Materia_Grado">
-                      <option>MAT_03</option>
-                      <option>MAT_04</option>
-                      <option>MAT_05</option>
-                      <option>MAT_06</option>
-                      <option>MAT_07</option>
-                      <option>MAT_08</option>
-                      <option>MAT_09</option>
-                      <option>MAT_10</option>
-                      <option>MAT_11</option> 
-                      <option>LC_03</option> 
-                      <option>LC_04</option> 
-                      <option>LC_05</option> 
-                      <option>LC_06</option>
-                      <option>LC_07</option>
-                      <option>LC_08</option>
-                      <option>LC_09</option>
-                      <option>LC_10</option>
-                      <option>LC_11</option> 
-                      <option>SOC_03</option>
-                      <option>SOC_04</option>  
-                      <option>SOC_05</option>
-                      <option>SOC_06</option>
-                      <option>SOC_07</option>
-                      <option>SOC_08</option>
-                      <option>SOC_09</option>
-                      <option>SOC_10</option>
-                      <option>SOC_11</option>
-                      <option>ING_03</option>
-                      <option>ING_04</option>
-                      <option>ING_05</option>
-                      <option>ING_06</option>
-                      <option>ING_07</option>
-                      <option>ING_08</option>
-                      <option>ING_09</option>
-                      <option>ING_10</option>
-                      <option>ING_11</option>
-                      <option>CN_03</option>
-                      <option>CN_04</option> 
-                      <option>CN_05</option> 
-                      <option>CN_06</option> 
-                      <option>CN_07</option> 
-                      <option>CN_08</option>
-                      <option>CN_09</option>  
-                      <option>CN_10</option> 
-                      <option>CN_11</option> 
+                    <optgroup label="Materia_Grado" class="HojasS">
+                      
                     </optgroup>
                   </select>
-                  <label for="InputEstudentEva">
+                  <label for="InputGrado">
+                    Seleccione el grado 
+                  </label>
+                  <select class="gradoEva" name="Grado" id="InputGrado">
+                    <optgroup label="Grado">
+                      <option>03</option>
+                      <option>04</option>
+                      <option>05</option>
+                      <option>06</option>
+                      <option>07</option>
+                      <option>08</option>
+                      <option>09</option>
+                      <option>10</option>
+                      <option>11</option>
+                    </optgroup>
+                  </select>
+                </div>
+
+                <div class = "container_MatGrado">
+                  <label for="InputEvaMat">
+                    Seleccione la materia a evaluar  
+                  </label>
+                  <select class="MateriaEva" name="Eva_Materia" id="InputEvaMat">
+                    <optgroup label="Eva_Materia">
+                      <option>Eva_MAT</option>
+                      <option>Eva_SOC</option>
+                      <option>Eva_LC</option>
+                      <option>Eva_ING</option>
+                      <option>Eva_CN</option>
+                    </optgroup>
+                  </select>
+                  
+                   <label for="InputEstudentEva">
                     Número de estudiantes
                   </label>
                   <input class="InputEstudent" id="InputEstudentEva" type="number" placeholder="16">
                 </div>
+                
 
                 <label for="InputColum">
                   Columna donde se 
@@ -701,6 +690,25 @@ let objeto = {
     google.script.run.docentes(objeto)
 }
 
+var inputIDevalua = document.querySelector('#InputIDplanilla')
+inputIDevalua.addEventListener('input', hojas)
+
+function hojas (e){
+  let inputID = e.target.value
+  let objetoIDEva = {
+    inputId: inputID
+  }
+  google.script.run.withSuccessHandler(hojasData).hojasData(objetoIDEva)
+}
+
+function hojasData(hojasCal){
+  const sel = document.querySelector('.HojasS')
+  for(let i = 0; i < hojasCal.length; i++){
+    let Hoja = hojasCal[i]
+    sel.innerHTML += `<option> ${Hoja} </option>`;
+  }
+}
+
 function evaluacion(){
 
 let exprLetras = /^[a-zA-Z]/
@@ -708,6 +716,8 @@ let exprNada = /^[]/
 const idNotasEval = document.querySelector('#InputIDplanilla')
 const periodoEva = document.querySelector('.PeriodoEva')
 const asignaturaEva = document.querySelector('.MateriaGradoEva')
+const Eva_Materia = document.querySelector('.MateriaEva')
+const grado = document.querySelector('.gradoEva')
 const colum = document.querySelector('#InputColum')
 const fila = document.querySelector('.Fila')
 const numeroEstudiantes = document.querySelector('.InputEstudent')
@@ -737,7 +747,13 @@ let selectedAsignaturasEva = asignaturasEva.text
 
 let numeroEstudiante = numeroEstudiantes.value
 
-let columnas
+let EvaMateria = Eva_Materia.options[Eva_Materia.selectedIndex]
+let selectesEvaMateria = EvaMateria.text
+
+let EvaGrado = grado.options[grado.selectedIndex]
+let selectesEvaGrado = EvaGrado.text
+
+let columnas 
 
 if (exprLetras.test(colum.value)) {
   const isError = colum.classList.toggle('ErrorInputColum')
@@ -758,6 +774,8 @@ let objetoEva = {
   periodoEva: selectedPeriodoEva,
   asignaturaEva: selectedAsignaturasEva,
   idnotasEva: idNotasEva,
+  EvMateria: selectesEvaMateria,
+  EvGrados: selectesEvaGrado,
   columa: columnas,
   fila: filas,
   numeroEst: numeroEstudiante
