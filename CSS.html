@@ -3,10 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Carme&family=Mitr:wght@200;300&family=Rubik:wght@700&display=swap');
 :root{
     --borderColor: rgb(0 255 220);
-    --white: white;
+    --white: #ffffff;
+    --black: #000000;
     --cafe: #222225;
     --fontsize: 15px;
-    --fontsizeh1: 35px;
+    --fontsizeh1: 30px;
     --center: center;
 }
 
@@ -14,46 +15,85 @@ body{
     margin: 0;
     width: 100%;
     min-height: 100vh;
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuZGV2L3N2Z2pzIiB2aWV3Qm94PSIwIDAgNzAwIDcwMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBncmFkaWVudFRyYW5zZm9ybT0icm90YXRlKDE1MCwgMC41LCAwLjUpIiB4MT0iNTAlIiB5MT0iMCUiIHgyPSI1MCUiIHkyPSIxMDAlIiBpZD0iZmZmbHV4LWdyYWRpZW50Ij48c3RvcCBzdG9wLWNvbG9yPSJoc2woMCwgMCUsIDEwMCUpIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMCUiPjwvc3RvcD48c3RvcCBzdG9wLWNvbG9yPSJoc2woMjI3LCAxMDAlLCA1MCUpIiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMTAwJSI+PC9zdG9wPjwvbGluZWFyR3JhZGllbnQ+PGZpbHRlciBpZD0iZmZmbHV4LWZpbHRlciIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSIgZmlsdGVyVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiBwcmltaXRpdmVVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CiAgPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuMDA1IDAuMDAzIiBudW1PY3RhdmVzPSIyIiBzZWVkPSIyNTUiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHg9IjAlIiB5PSIwJSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgcmVzdWx0PSJ0dXJidWxlbmNlIj48L2ZlVHVyYnVsZW5jZT4KICA8ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIyMCAwIiB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGluPSJ0dXJidWxlbmNlIiBlZGdlTW9kZT0iZHVwbGljYXRlIiByZXN1bHQ9ImJsdXIiPjwvZmVHYXVzc2lhbkJsdXI+CiAgPGZlQmxlbmQgbW9kZT0iY29sb3ItZG9kZ2UiIHg9IjAlIiB5PSIwJSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgaW49IlNvdXJjZUdyYXBoaWMiIGluMj0iYmx1ciIgcmVzdWx0PSJibGVuZCI+PC9mZUJsZW5kPgogIAo8L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiIGZpbGw9InVybCgjZmZmbHV4LWdyYWRpZW50KSIgZmlsdGVyPSJ1cmwoI2ZmZmx1eC1maWx0ZXIpIj48L3JlY3Q+PC9zdmc+");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: grid;
-    place-items: center;
+    background-color: #20252C;
+}
+
+.header{
+    width: 100%;
+    color: rgb(255 255 255);
+    font-family: 'Rubik', sans-serif;
+}
+
+.header-container{
+    display:flex; 
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto 19px;
+    max-width: 1200px;
+}
+
+.header-ul{
+    display:flex; 
+    font-size: 13px;
+    justify-content: space-evenly;
+    column-gap: 1.75rem;
+}
+
+.header-ul>li>a{
+    display: inline-block;
+    text-decoration:none;
+    font-size: 20px;
+}
+
+.header-ul>li {
+    cursor: pointer;
+}
+
+.header__ul--li1:hover{
+    color: #A3A3A3;
+}
+
+.header__ul--li2:hover{
+    color: #A3A3A3;
+}
+
+.header__ul--li3:hover{
+    color: #A3A3A3;
+}
+
+.header__ul--li4:hover{
+    color: #A3A3A3;
+}
+
+section {
+    display: flex;
+    justify-content: center
 }
 
 .contenedor__Docente{
-    border-radius: 50px;
-    background: #243461;
-    box-shadow:  28px 28px 52px #1c284b,
-             -28px -28px 52px #2c4077;
-    display: grid;
-    place-content: center;
-}
-
-.Contenedor{
     box-shadow:
                 20px 20px 60px #2742ba,
                 -20px -20px 60px #4372ff;
     backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(17, 25, 40, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.125);
     border-radius: 50px;
+    background: #13111C;
     display: grid;
-    place-content: var(--center);
-    grid-template-columns: 29rem 35rem 25rem;
-    height: 56rem;
-    gap: 2rem;
-    width: 99rem;
+    place-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    width: 30rem;
+    padding: 10px;
 }
 
-h1{
+.inactive{
+    display:none;
+}
+
+h2{
     text-align: var(--center);
     font-family: 'Rubik', sans-serif;
-    font-size: var(--fontsizeh1);
     margin: 12px;
-    color: var(--white);
-}
+    color: rgb(250 204 21/1);
+} 
 
 form {
     display: flex;
@@ -64,17 +104,15 @@ form {
 
 label {
     font-family: 'Mitr', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.75;
     text-align: var(--center);
-    margin: 11px;
-    color: var(--white);
+    color: rgb(255 255 255/1);
     padding: 6px;
 }
 
 .IDnotas {
     text-align: var(--center);
-    background: transparent;
     margin: 11px;
     border-radius: 10px;
     border: 2px solid var(--borderColor);
@@ -102,42 +140,19 @@ input::placeholder {
     font-size: var(--fontsize);
     font-weight: bold;
     font-family: 'Carme', sans-serif;
-    color: var(--white);
+    color: var(--black);
 }
 
-.container_SelectDocente{
+.container_LabelInputSelect{
     display: flex;
     justify-content: var(--center);
     align-items: var(--center);
-    gap: 42px;
+    gap: 21px;
     margin: 11px;
 }
 
-.container_SelectPeriodo{
-    display: flex;
-    justify-content: var(--center);
-    align-items: var(--center);
-    gap: 7rem;
-    margin: 11px;
-}
-
-.container_SelectGrado{
-    display: flex;
-    justify-content: var(--center);
-    align-items: var(--center);
-    margin: 0 52px;
-}
-
-.container_MatGrado{
-    display: flex;
-    justify-content: var(--center);
-    align-items: var(--center);
-    margin: 0 52px;
-}
-
-.container_MatGrado .InputEstudent{
+.container_LabelInputSelect .InputEstudent{
     text-align: var(--center);
-    background: transparent;
     margin: 11px;
     border-radius: 10px;
     border: 2px solid var(--borderColor);
@@ -147,10 +162,10 @@ input::placeholder {
     font-size: 16px;
     font-weight: bold;
     font-family: 'Carme', sans-serif;
-    color: var(--white);
+    color: var(--black);
 }
 
-.container_SelectDocente select{
+.container_LabelInputSelect select{
     color: var(--white);
     height: 30px;
     width: 8rem;
@@ -162,7 +177,7 @@ input::placeholder {
     border: 2px solid var(--borderColor);
 }
 
-.container_SelectPeriodo select{
+.container_LabelInputSelect select{
     color: var(--white);
     height: 30px;
     width: 4rem;
@@ -174,10 +189,10 @@ input::placeholder {
     border: 2px solid var(--borderColor);
 }
 
-.container_SelectGrado select{
+.container_LabelInputSelect select{
     color: var(--white);
     height: 30px;
-    width: 6rem;
+    width: 8rem;
     margin: 4px;
     border-radius: 10px;
     font-family: 'Carme', sans-serif;
@@ -186,10 +201,10 @@ input::placeholder {
     border: 2px solid var(--borderColor);
 }
 
-.container_MatGrado .MateriaEva{
+.container_LabelInputSelect .MateriaEva{
     color: var(--white);
     height: 30px;
-    width: 6rem;
+    width: 8rem;
     margin: 11px;
     border-radius: 10px;
     font-family: 'Carme', sans-serif;
@@ -198,10 +213,10 @@ input::placeholder {
     border: 2px solid var(--borderColor);
 }
 
-.container_SelectGrado .gradoEva{
+.container_LabelInputSelect .gradoEva{
     color: var(--white);
     height: 30px;
-    width: 6rem;
+    width: 8rem;
     margin: 11px;
     border-radius: 10px;
     font-family: 'Carme', sans-serif;
@@ -234,7 +249,8 @@ input::placeholder {
 }
 
 .enviar:hover{
-    box-shadow: #ffffff
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px  #ffffff;
 }
 
 .enviar::before{
@@ -275,15 +291,21 @@ input::placeholder {
 }
 
 .contenedor__Evaluación{
+    box-shadow:
+                20px 20px 60px #2742ba,
+                -20px -20px 60px #4372ff;
+    backdrop-filter: blur(16px) saturate(180%);
     border-radius: 50px;
-    background: #243461;
-    box-shadow:  28px 28px 52px #1c284b,
-             -28px -28px 52px #2c4077;
+    background: #13111C;
+    display: grid;
+    place-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    width: 60rem;
+    padding: 10px;
 }
 
 .IDtuplanilla {
     text-align: var(--center);
-    background: transparent;
     margin: 11px;
     border-radius: 10px;
     border: 2px solid var(--borderColor);
@@ -292,7 +314,7 @@ input::placeholder {
     outline: none;
     font-family: 'Carme', sans-serif;
     font-size: 16px;
-    color: var(--white);
+    color: var(--black);
 }
 
 .errorIDtuplanilla {
@@ -311,7 +333,6 @@ input::placeholder {
 
 .Colum{
     text-align: var(--center);
-    background: transparent;
     margin: 11px;
     border-radius: 10px;
     border: 2px solid var(--borderColor);
@@ -321,7 +342,7 @@ input::placeholder {
     font-family: 'Carme', sans-serif;
     font-size: 16px;
     font-weight: bold;
-    color: var(--white);
+    color: var(--black);
 }
 
 .ErrorInputColum {
@@ -341,7 +362,6 @@ input::placeholder {
 
 .formIDplanilla .Fila{
     text-align: var(--center);
-    background: transparent;
     margin: 11px;
     border-radius: 10px;
     border: 2px solid var(--borderColor);
@@ -351,26 +371,24 @@ input::placeholder {
     font-family: 'Carme', sans-serif;
     font-size: 16px;
     font-weight: bold;
-    color: var(--white);
+    color: var(--black);
 }
 
 .contenedor__Curso{
+    box-shadow:
+                20px 20px 60px #2742ba,
+                -20px -20px 60px #4372ff;
+    backdrop-filter: blur(16px) saturate(180%);
     border-radius: 50px;
-    background: #243461;
-    box-shadow:  28px 28px 52px #1c284b,
-             -28px -28px 52px #2c4077;
+    background: #13111C;
     display: grid;
     place-content: center;
-}
-.container_SelectGradoDoc {
-    display: flex;
-    justify-content: var(--center);
-    align-items: var(--center);
-    margin: 0 52px;
-    gap: 64px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    width: 22rem;
+    padding: 10px;
 }
 
-.container_SelectGradoDoc select{
+.container_LabelInputSelect select{
     color: var(--white);
     height: 30px;
     width: 8rem;
@@ -382,29 +400,57 @@ input::placeholder {
     border: 2px solid var(--borderColor);
 }
 
-.container_SelectMatGrado{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 25px;
-} 
-
-.container_SelectMatGrado select{
-    color: var(--white);
-    height: 30px;
-    width: 6rem;
-    margin: 11px;
-    border-radius: 10px;
-    font-size: var(--fontsize);
-    font-family: 'Carme', sans-serif;
-    background: var(--cafe);
-    border: 2px solid var(--borderColor);
+.Directiva {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2rem;
 }
 
-footer{
+.contenedor__Directivas{
+    box-shadow:
+                20px 20px 60px #2742ba,
+                -20px -20px 60px #4372ff;
+    backdrop-filter: blur(16px) saturate(180%);
+    border-radius: 50px;
+    background: #13111C;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    place-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    width: 39rem;
+    padding: 10px;
+}
+
+.formIDplanillaNuevoDoc {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.IDnuevoDoc{
+    text-align: var(--center);
+    margin: 11px;
+    border-radius: 10px;
+    border: 2px solid var(--borderColor);
+    height: 25px;
+    width: 21rem;
+    outline: none;
+    font-size: 16px;
+    font-family: 'Carme', sans-serif;
+}
+
+.sectionDirecDoc {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+}
+
+.sectionDirecEva {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
 }
 
 li{
@@ -420,69 +466,29 @@ a{
     color: inherit;
 }
 
+footer{
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
 .footer__container{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.footer__container>p{
     font-family: 'Carme', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.05rem;
+    color: var(--white);
 }
 
-@media (max-width:1448px){
-    body{
-        height: 100%;
-    }
-
-    .Contenedor{
-        grid-template-columns: 32rem 32rem;
-        height: 100%;
-        width: 73rem;
-        margin: 87px 0 -45px 0;
-        gap: 3rem;
-    }
-
-    footer{
-        margin-top: 7rem;
-    }
-
-    .contenedor__Curso{
-        grid-column: 1 / 3;
-    }
+.Linkedin:hover{
+    fill: rgb(250 204 21/1);
 }
 
-@media (max-width:1130px){
-    body{
-        height: 100%;
-    }
-
-    .Contenedor{
-        height: 100%;
-        width: 42rem;
-        margin: 87px 0 -45px 0;
-        display: flex;
-        flex-direction: column;
-    }
-
-    footer{
-        margin-top: 7rem;
-    }
-
-    .contenedor__Curso{
-        grid-column: 1 / 3;
-    }
-
-    .contenedor__Docente{
-        width: 32rem;
-        margin-left: 78px;
-    }
-
-    .contenedor__Evaluación{
-        width: 32rem;
-        margin-left: 78px;
-    }
-
-    .contenedor__Curso{
-        width: 32rem;
-        margin-left: 78px;
-    }
+.Github:hover{
+    fill: rgb(250 204 21/1);
 }
 </style>
+
+

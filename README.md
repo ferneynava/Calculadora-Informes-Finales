@@ -1,4 +1,4 @@
-<a name="readme-top"></a>
+<a name="volver-arriba"></a>
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -29,24 +29,21 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Tabla de contenido</summary>
   <ol>
     <li>
-      <a href="#acerca del proyecto">Acerca del proyecto</a>
+      <a href="#acerca-del-proyecto">Acerca del proyecto</a>
       <ul>
-        <li><a href="#tecnología">Tecnologías 🔧</a></li>
+        <li><a href="#tecnologías">Tecnologías 🔧</a></li>
       </ul>
-    </li>
-    <li>
-      <a href="#empezando">Empezando</a>
     </li>
     <li><a href="#contribuyendo">Contribuyendo</a></li>
     <li><a href="#licencia">Licencia</a></li>
-    <li><a href="#contact">Contacto</a></li>
+    <li><a href="#contacto">Contacto</a></li>
   </ol>
 </details>
 
-### Acerca del proyecto
+## Acerca del proyecto
 
 [![Product Name Screen Shot][product-screenshot]](https://github.com/ferneynava/Calculadora-Informes-Finales)
 
@@ -56,7 +53,7 @@ Además he integrado la página web con la plataforma Apps Script de Google Work
 
 Es una solución innovadora que simplifica y mejora la gestión de informes finales.
 
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+<p align="right">(<a href="#volver-arriba">volver arriba</a>)</p>
 
 ### Tecnologías
 
@@ -67,7 +64,7 @@ Es una solución innovadora que simplifica y mejora la gestión de informes fina
 - ![NPM]
 - ![eslint]
 
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+<p align="right">(<a href="#volver-arriba">volver arriba</a>)</p>
 
 ### Contribuyendo
 
@@ -81,7 +78,7 @@ Si tiene una sugerencia que mejoraría esto, bifurque el repositorio y crea una 
 4. Empuje a la Sucursal (`git push origin branch`)
 5. Abrir una solicitud de extracción
 
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+<p align="right">(<a href="#volver-arriba">volver arriba</a>)</p>
 
 <!-- LICENSE -->
 
@@ -89,13 +86,13 @@ Si tiene una sugerencia que mejoraría esto, bifurque el repositorio y crea una 
 
 Distribuido bajo la licencia MIT. Consulte `LICENSE.txt` para obtener más información.
 
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+<p align="right">(<a href="#volver-arriba">volver arriba</a>)</p>
 
 ### Contacto
 
 Ferney Alexander Nava Trujillo - ferneynava@gmail.com
 
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
+<p align="right">(<a href="#volver-arriba">volver arriba</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/ferneynava/Calculadora-Informes-Finales.svg?style=for-the-badge
 [contributors-url]: https://github.com/ferneynava/Calculadora-Informes-Finales/graphs/contributors
@@ -109,7 +106,7 @@ Ferney Alexander Nava Trujillo - ferneynava@gmail.com
 [license-url]: https://github.com/ferneynava/Calculadora-Informes-Finales/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/ferney-alexander-nava-trujillo-0478a8118/
-[product-screenshot]: Asset/Captura%20de%20pantalla%202023-04-08%20212237.png
+[product-screenshot]: Asset/Page.gif
 [html]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
 [css]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
 [google-apps-script]: https://i.ibb.co/wpHYZm6/Google-Apps-Script-svg.png

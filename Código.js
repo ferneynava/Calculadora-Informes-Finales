@@ -1,7 +1,144 @@
+/* eslint-disable no-var */
 /* eslint-disable space-before-function-paren */
 /* eslint-disable prefer-const */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+var objectAsignatura = {
+  ART: 'ArtesArtística',
+  ART_PK: 'ArtesArtística',
+  ART_K: 'ArtesArtística',
+  ART_T: 'ArtesArtística',
+  BOI: 'Ciencias Naturales y Ed ambientalBiología',
+  CN: 'Ciencias Naturales y Ed ambientalCiencias Naturales',
+  CN_PK: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
+  CN_K: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
+  ETIC: 'ÉticaÉtica',
+  E: 'Educación FísicaEd. Física',
+  ERE: 'EREERE',
+  E_PK: 'Educación FísicaEd. Física',
+  E_K: 'Educación FísicaEd. Física',
+  E_T: 'Educación FísicaEd. Física',
+  ETIC_PK: 'DimensionesDimensión Ética',
+  ETIC_K: 'DimensionesDimensión Ética',
+  ETIC_T: 'DimensionesDimensión Ética',
+  ERE_PK: 'DimensionesDimensión Espiritual ERE',
+  ERE_K: 'DimensionesDimensión Espiritual ERE',
+  ERE_T: 'DimensionesDimensión Espiritual ERE',
+  FIS: 'Ciencias Naturales y Ed ambientalFísica',
+  FILO: 'FilosofíaFilosofía',
+  INV: 'Ciencias SocialesInvestigación',
+  ING: 'InglésInglés',
+  ING_PK: 'DimensionesDimensión Comunicativa Inglés',
+  ING_K: 'DimensionesDimensión Comunicativa Inglés',
+  ING_T: 'DimensionesDimensión Comunicativa Inglés',
+  ICFES: 'Preparación ICFESPreicfes',
+  LC: 'Lengua CastellanaLengua Castellana',
+  LC_PK: 'DimensionesDimensión Comunicativa Lengua Castellana',
+  LC_K: 'DimensionesDimensión Comunicativa Lengua Castellana',
+  LC_T: 'DimensionesDimensión Comunicativa Lengua Castellana',
+  MAT: 'MatemáticasMatemáticas',
+  MATH: 'InglésMath',
+  MUS: 'ArtesMúsica',
+  MUS_PK: 'ArtesMúsica',
+  MUS_K: 'ArtesMúsica',
+  MUS_T: 'ArtesMúsica',
+  MAT_PK: 'DimensionesDimensión congnitiva Matemáticas',
+  MAT_K: 'DimensionesDimensión congnitiva Matemáticas',
+  MAT_T: 'DimensionesDimensión congnitiva Matemáticas',
+  MATH_PK: 'InglésMath',
+  MATH_K: 'InglésMath',
+  MATH_T: 'InglésMath',
+  PL: 'InglésPlan lector',
+  QUI: 'Ciencias Naturales y Ed ambientalQuímica',
+  SOC: 'Ciencias SocialesC. Sociales',
+  SCI: 'InglésScience',
+  SOC_PK: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
+  SOC_K: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
+  SOC_T: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
+  SCI_PK: 'InglésScience',
+  SCI_K: 'InglésScience',
+  SCI_T: 'InglésScience',
+  TEC: 'TecnologíaTecnología',
+  TEC_PK: 'DimensionesDimensión cognitiva Tecnología',
+  TEC_K: 'DimensionesDimensión cognitiva Tecnología',
+  TEC_T: 'DimensionesDimensión cognitiva Tecnología'
+}
+
+var objectGrado = {
+  PK: 'PJº',
+  K: 'Jº',
+  T: 'TRº',
+  '01': '1º',
+  '02': '2º',
+  '03': '3º',
+  '04': '4º',
+  '05': '5º',
+  '06': '6º',
+  '07': '7º',
+  '08': '8º',
+  '09': '9º',
+
+  10: '10º',
+
+  11: '11º'
+}
+
+var objectPeriodos = {
+  '01': '1P',
+  '02': '2P',
+  '03': '3P',
+  '04': '4P',
+  Final: '5P'
+}
+
+var DatabaseDoc = function () {
+  const idBaseData = '1XqiRk7cVqoYiWNFdZ6ePYrjdsmFZugDzGGtpw5ouR9U'
+  let agregarObtenerData = SpreadsheetApp.openById(`${idBaseData}`).getActiveSheet()
+  let data = agregarObtenerData.getDataRange().getValues()
+  data.shift()
+  let Docid = data.map((arrays) => {
+    arrays.splice(1, 1)
+    return arrays
+  })
+
+  return Object.fromEntries(Docid)
+}
+
+var DatabaseEva = function () {
+  const idBaseData = '1XqiRk7cVqoYiWNFdZ6ePYrjdsmFZugDzGGtpw5ouR9U'
+  let agregarObtenerData = SpreadsheetApp.openById(`${idBaseData}`).getSheetByName('Evaluaciones')
+  let data = agregarObtenerData.getRange(2, 1, 17, 2).getValues()
+  let dataEva = data.filter(dat => dat.some(element => element !== ''))
+  return Object.fromEntries(dataEva)
+}
+
+var objectGradoID = {
+  '00_K': '1V9DxP4MrvWV24c2v0_bAxUkYrsdXLFMp3EMe81O8Kvs',
+  '00_PK': '1r_FOk72TfYaikMKWF0zSkQ7qP7_CnGlEiz3Rit4p7XQ',
+  '00_T': '1ieXf0KSn4ybzFF2fjebpvrvVsWdbl9AB_kh5fh_cxC4',
+  '01': '1Rc6KLWI7HbMRTbBqW2n4wpfNDJnvS0Ax_kXvmrivOBs',
+  '02': '1o__2-AOkTrvcrwkYL_QTFQTofhHj5M5jij2REzZRoJU',
+  '03': '1IDnC0cTgTMjNB57gTb2IrxDNjp3ixYQGEyS4rXxXdRE',
+  '04': '12GrBIsDXLrWbDMDMtW6s2e4MYS9bJHJYB5nY-pgPRKs',
+  '05': '1eXiA69pEr8yZdHM3bTxfZ2f9KTzNkNn55NI_ThdPbmY',
+  '06': '1pZ-cz_Bmq_9784pFXsOtSVo-yMYgFQmqOjk9DwlsmSs',
+  '07': '1PphndEzhN0wod3BxzNfPdS8jlpwzJtbZvFamXX2aZEI',
+  '08': '1SXa5D3HMhdg4nIIa_cpsy1IwYX3_MWXvIcKFZ2VsBCc',
+  '09': '1hmiODqziuLO7Q2_sdpZph7x-yQHASo6X2lWtQth9SFg',
+  // eslint-disable-next-line quote-props
+  '10': '1y5sd7uTfZDLF1J2Z75r9eLGM27TYoS8NFjqi_k0QODQ',
+  // eslint-disable-next-line quote-props
+  '11': '1YRpY7FLwnUYW8_1eEanLaBmv8BiPlWhc5_8H3-cfHpE'
+}
+
+var objectPeriodoCur = {
+  '01': 5,
+  '02': 35,
+  '03': 65,
+  '04': 95,
+  Final: 125
+}
+
 function doGet() {
   return HtmlService.createTemplateFromFile('index').evaluate().setTitle('Envio de datos MauxiChia')
 }
@@ -11,118 +148,12 @@ function include(filename) {
     .getContent()
 }
 
-function docentes(numero) {
-  const objectAsignatura = {
-    MAT: 'MatemáticasMatemáticas',
-    TEC: 'TecnologíaTecnología',
-    LC: 'Lengua CastellanaLengua Castellana',
-    ETIC: 'ÉticaÉtica',
-    ART: 'ArtesArtística',
-    SOC: 'Ciencias SocialesC. Sociales',
-    INV: 'Ciencias SocialesInvestigación',
-    E: 'Educación FísicaEd. Física',
-    SCI: 'InglésScience',
-    MATH: 'InglésMath',
-    PL: 'InglésPlan lector',
-    CN: 'Ciencias Naturales y Ed ambientalCiencias Naturales',
-    BOI: 'Ciencias Naturales y Ed ambientalBiología',
-    ING: 'InglésInglés',
-    FIS: 'Ciencias Naturales y Ed ambientalFísica',
-    QUI: 'Ciencias Naturales y Ed ambientalQuímica',
-    ICFES: 'Preparación ICFESPreicfes',
-    MUS: 'ArtesMúsica',
-    ERE: 'EREERE',
-    FILO: 'FilosofíaFilosofía',
-    TEC_PK: 'DimensionesDimensión cognitiva Tecnología',
-    TEC_K: 'DimensionesDimensión cognitiva Tecnología',
-    TEC_T: 'DimensionesDimensión cognitiva Tecnología',
-    ART_PK: 'ArtesArtística',
-    ART_K: 'ArtesArtística',
-    ART_T: 'ArtesArtística',
-    E_PK: 'Educación FísicaEd. Física',
-    E_K: 'Educación FísicaEd. Física',
-    E_T: 'Educación FísicaEd. Física',
-    CN_PK: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
-    CN_K: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
-    ETIC_PK: 'DimensionesDimensión Ética',
-    ETIC_K: 'DimensionesDimensión Ética',
-    ETIC_T: 'DimensionesDimensión Ética',
-    MUS_PK: 'ArtesMúsica',
-    MUS_K: 'ArtesMúsica',
-    MUS_T: 'ArtesMúsica',
-    LC_PK: 'DimensionesDimensión Comunicativa Lengua Castellana',
-    LC_K: 'DimensionesDimensión Comunicativa Lengua Castellana',
-    LC_T: 'DimensionesDimensión Comunicativa Lengua Castellana',
-    MAT_PK: 'DimensionesDimensión congnitiva Matemáticas',
-    MAT_K: 'DimensionesDimensión congnitiva Matemáticas',
-    MAT_T: 'DimensionesDimensión congnitiva Matemáticas',
-    SOC_PK: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
-    SOC_K: 'DimensionesDimensión Socioafectiva Ciencias Sociales y Naturales',
-    ING_PK: 'DimensionesDimensión Comunicativa Inglés',
-    ING_K: 'DimensionesDimensión Comunicativa Inglés',
-    ING_T: 'DimensionesDimensión Comunicativa Inglés',
-    SCI_PK: 'InglésScience',
-    SCI_K: 'InglésScience',
-    SCI_T: 'InglésScience',
-    MATH_PK: 'InglésMath',
-    MATH_K: 'InglésMath',
-    MATH_T: 'InglésMath',
-    ERE_PK: 'DimensionesDimensión Espiritual ERE',
-    ERE_K: 'DimensionesDimensión Espiritual ERE',
-    ERE_T: 'DimensionesDimensión Espiritual ERE'
-  }
-
-  const objectGrado = {
-    PK: 'PJº',
-    K: 'Jº',
-    T: 'Tº',
-    '01': '1º',
-    '02': '2º',
-    '03': '3º',
-    '04': '4º',
-    '05': '5º',
-    '06': '6º',
-    '07': '7º',
-    '08': '8º',
-    '09': '9º',
-    // eslint-disable-next-line quote-props
-    '10': '10º',
-    // eslint-disable-next-line quote-props
-    '11': '11º'
-  }
-
-  const objectPeriodos = {
-    '01': '1P',
-    '02': '2P',
-    '03': '3P',
-    '04': '4P',
-    Final: '5P'
-  }
-
-  const objectDocente = {
-    Doc_Amanda: '1XB1-v-m9lBm1scgXfX1sn7XK2OAmjsX4AVVHZUZ6Jhw',
-    Doc_Angela: '1kwM2CVB8Rby7PGHdZhq9xXZ7KhAOSQRueuXxL8JpPKQ',
-    Doc_Daniela: '1sOq0XaFy7_fJlOZQnWAFqJnFtyJq4NJUyQffMV-c6J8',
-    Doc_Erika: '1XZGOUBAg6lOViB23YMpB3zLvXZSbxcygxJhTja5AiLU',
-    Doc_Ferney: '18t8aEDKxRe9m6MydLV4VQlyNZc6LSQy8Ul5OvhtZVsI',
-    Doc_John: '1GUZJvDYGAdy4H8UpNFPVJTO-gUb0Nd8yLpf7J90tauI',
-    Doc_JuanPablo: '1SlCg1RXGajBBe4HEGR3Vda2kUd_lcM0D3atuzrccXdY',
-    Doc_July: '1L9EUDudzmn8l0_9wdXkE-g_uNWwoCl5fDfPeX217-E0',
-    Doc_Karyna: '1sejVpoJcWCsGCl44UPnHtf9Dk5esjlbbh2KF7Xln9ng',
-    Doc_Katherine: 'hqPA5kedWn7yommZgBVK68JKs9Vpz_ppeQHwKY',
-    Doc_Kevin: '1aB8F9iyw6V7J5O2aSI9fjrnovMqDT3zJ6aLA9id6X5w',
-    Doc_Luisa: '13Ymh4ornfqJTfA4SDrqRGjtyGgIxLR5VRG-XAJFwDVI',
-    Doc_Mateo: '1DldUG-_A_baDFpF5IbnJeP72sG1MxYagV4ZJn7A9oxQ',
-    Doc_Oscar: '1zIJSceuJSs9sh3E5GPgiEef87AHc5gBRXr_bfbdbN7k',
-    Doc_Patricia: '1oOVTRGI6y2o4qevMv8nzbdPurAjO5q8AZWqoLMulxY8',
-    Doc_SorJaneth: '14cMmtnrNBf900U7TrXm1zO28QfJkRVVgtF4JDUT0HUk',
-    Doc_Victoria: '1LANDaIZfbe9oGAJitER2Mpf0azZkcV6lvuwYQDfu6c4'
-  }
-
-  const periodoIngre = numero.periodo
+function docentes(object) {
+  let objectDocente = DatabaseDoc()
+  const periodoIngre = object.periodo
   const periodo = objectPeriodos[periodoIngre] ?? 'N/A'
 
-  const asignatura = numero.asignatura
+  const asignatura = object.asignatura
   const arrayAsignatutas = asignatura.split('_')
   let materia = arrayAsignatutas[0]
   let grado = arrayAsignatutas[1]
@@ -135,11 +166,11 @@ function docentes(numero) {
     materia = materia + '_' + grado
   }
 
-  const id = numero.idnotas
+  const id = object.idnotas
   const hoja = SpreadsheetApp.openById(`${id}`).getSheetByName(gradoPlaCompleta)
   const dataCompleta = hoja.getDataRange().getValues()
 
-  const docente = numero.idCalculadora
+  const docente = object.idCalculadora
   const idDocente = objectDocente[docente] ?? 'N/A'
 
   const calculadora = SpreadsheetApp.openById(`${idDocente}`).getSheetByName(`Datos ${periodo}`)
@@ -216,8 +247,8 @@ function docentes(numero) {
   }
 }
 
-function hojasData(numeros) {
-  const id = numeros.inputId
+function hojasData(object) {
+  const id = object.inputId
   const datos = SpreadsheetApp.openById(`${id}`)
   let hojas = datos.getSheets()
   let totalArray = hojas.length
@@ -230,44 +261,29 @@ function hojasData(numeros) {
   return array
 }
 
-function evaluaciones(numeros) {
-  let idPlanillaNotas = numeros.idnotasEva
-  let materiaGrado = numeros.asignaturaEva
-  let evaMateria = numeros.EvMateria
-  let evaGrado = numeros.EvGrados
-  let columna = numeros.columa
-  let numeroEs = numeros.numeroEst
+function evaluaciones(object) {
+  let objectEvaMaterias = DatabaseEva()
+  let idPlanillaNotas = object.idnotasEva
+  let materiaGrado = object.asignaturaEva
+  let evaMateria = object.EvMateria
+  let evaGrado = object.EvGrados
+  let columna = object.columa
+  let numeroEs = object.numeroEst
   let mayusColumna = columna.toUpperCase()
-  let fila = numeros.fila
+  let fila = object.fila
 
   const arrayevaMateria = evaMateria.split('_')
   let Eva = arrayevaMateria[0]
   let Mate = arrayevaMateria[1]
 
-  const objectPeriodosEva = {
-    '01': '1P',
-    '02': '2P',
-    '03': '3P',
-    '04': '4P',
-    Final: '5P'
-  }
-
   let materiaPlaEva = Mate + '_' + evaGrado
-
-  const objectEvaMaterias = {
-    Eva_MAT: '1cyDyae-stuOSTLje0npIokayvJEPZzTPxpB-jhTIp38',
-    Eva_SOC: '17fN-tEadh6WLUHXGzAZcVI7uN0Lv9F_Slv8g--CM8xo',
-    Eva_LC: '1OgnITsMPKNIB4yVW5v1U0IzI0LJlng6z-JU954PxuVA',
-    Eva_ING: '1bWSc3ctSnsxSYU-Sqot-lG_Dxi9HMZomBmue0hahUuo',
-    Eva_CN: '14xV5uEn42TSzsumBxl1OrKYpQbV52sqdIl7TFq8Og1I'
-  }
 
   const planillaNotas = SpreadsheetApp.openById(idPlanillaNotas).getSheetByName(materiaGrado)
 
   let hojaEva = objectEvaMaterias[evaMateria]
 
-  const periodoEvaIngre = numeros.periodoEva
-  const periodoEva = objectPeriodosEva[periodoEvaIngre] ?? 'N/A'
+  const periodoEvaIngre = object.periodoEva
+  const periodoEva = objectPeriodos[periodoEvaIngre] ?? 'N/A'
   const calculadoraEva = SpreadsheetApp.openById(hojaEva).getSheetByName(`Datos ${periodoEva}`)
   let dataCalculadoraEva = calculadoraEva.getDataRange().getValues()
   let arrayAsignaturaEva = dataCalculadoraEva[2]
@@ -285,63 +301,17 @@ function evaluaciones(numeros) {
   }
 }
 
-function curso(numeros) {
-  const objectGrado = {
-    '00_K': '1V9DxP4MrvWV24c2v0_bAxUkYrsdXLFMp3EMe81O8Kvs',
-    '00_PK': '1r_FOk72TfYaikMKWF0zSkQ7qP7_CnGlEiz3Rit4p7XQ',
-    '00_T': '1ieXf0KSn4ybzFF2fjebpvrvVsWdbl9AB_kh5fh_cxC4',
-    '01': '1Rc6KLWI7HbMRTbBqW2n4wpfNDJnvS0Ax_kXvmrivOBs',
-    '02': '1o__2-AOkTrvcrwkYL_QTFQTofhHj5M5jij2REzZRoJU',
-    '03': '1IDnC0cTgTMjNB57gTb2IrxDNjp3ixYQGEyS4rXxXdRE',
-    '04': '12GrBIsDXLrWbDMDMtW6s2e4MYS9bJHJYB5nY-pgPRKs',
-    '05': '1eXiA69pEr8yZdHM3bTxfZ2f9KTzNkNn55NI_ThdPbmY',
-    '06': '1pZ-cz_Bmq_9784pFXsOtSVo-yMYgFQmqOjk9DwlsmSs',
-    '07': '1PphndEzhN0wod3BxzNfPdS8jlpwzJtbZvFamXX2aZEI',
-    '08': '1SXa5D3HMhdg4nIIa_cpsy1IwYX3_MWXvIcKFZ2VsBCc',
-    '09': '1hmiODqziuLO7Q2_sdpZph7x-yQHASo6X2lWtQth9SFg',
-    // eslint-disable-next-line quote-props
-    '10': '1y5sd7uTfZDLF1J2Z75r9eLGM27TYoS8NFjqi_k0QODQ',
-    // eslint-disable-next-line quote-props
-    '11': '1YRpY7FLwnUYW8_1eEanLaBmv8BiPlWhc5_8H3-cfHpE'
-  }
+function curso(object) {
+  let objectDocente = DatabaseDoc()
+  let docenteCur = object.idCalculadoraDoc
+  let asignaturaGraCur = object.AsignaturaGrad
+  let PeriodoCur = object.periodoGrad
+  let GradoCur = object.grado
+  let MateriaGradoCur = object.materiaGrado
 
-  const objectDocenteCur = {
-    Doc_Amanda: '1XB1-v-m9lBm1scgXfX1sn7XK2OAmjsX4AVVHZUZ6Jhw',
-    Doc_Angela: '1kwM2CVB8Rby7PGHdZhq9xXZ7KhAOSQRueuXxL8JpPKQ',
-    Doc_Daniela: '1sOq0XaFy7_fJlOZQnWAFqJnFtyJq4NJUyQffMV-c6J8',
-    Doc_Erika: '1XZGOUBAg6lOViB23YMpB3zLvXZSbxcygxJhTja5AiLU',
-    Doc_Ferney: '18t8aEDKxRe9m6MydLV4VQlyNZc6LSQy8Ul5OvhtZVsI',
-    Doc_John: '1GUZJvDYGAdy4H8UpNFPVJTO-gUb0Nd8yLpf7J90tauI',
-    Doc_JuanPablo: '1SlCg1RXGajBBe4HEGR3Vda2kUd_lcM0D3atuzrccXdY',
-    Doc_July: '1L9EUDudzmn8l0_9wdXkE-g_uNWwoCl5fDfPeX217-E0',
-    Doc_Karyna: '1sejVpoJcWCsGCl44UPnHtf9Dk5esjlbbh2KF7Xln9ng',
-    Doc_Katherine: 'hqPA5kedWn7yommZgBVK68JKs9Vpz_ppeQHwKY',
-    Doc_Kevin: '1aB8F9iyw6V7J5O2aSI9fjrnovMqDT3zJ6aLA9id6X5w',
-    Doc_Luisa: '13Ymh4ornfqJTfA4SDrqRGjtyGgIxLR5VRG-XAJFwDVI',
-    Doc_Mateo: '1DldUG-_A_baDFpF5IbnJeP72sG1MxYagV4ZJn7A9oxQ',
-    Doc_Oscar: '1zIJSceuJSs9sh3E5GPgiEef87AHc5gBRXr_bfbdbN7k',
-    Doc_Patricia: '1oOVTRGI6y2o4qevMv8nzbdPurAjO5q8AZWqoLMulxY8',
-    Doc_SorJaneth: '14cMmtnrNBf900U7TrXm1zO28QfJkRVVgtF4JDUT0HUk',
-    Doc_Victoria: '1LANDaIZfbe9oGAJitER2Mpf0azZkcV6lvuwYQDfu6c4'
-  }
-
-  const objectPeriodoCur = {
-    '01': 5,
-    '02': 35,
-    '03': 65,
-    '04': 95,
-    Final: 125
-  }
-
-  let docenteCur = numeros.idCalculadoraDoc
-  let asignaturaGraCur = numeros.AsignaturaGrad
-  let PeriodoCur = numeros.periodoGrad
-  let GradoCur = numeros.grado
-  let MateriaGradoCur = numeros.materiaGrado
-
-  const idDocenteCur = objectDocenteCur[docenteCur] ?? 'N/A'
+  const idDocenteCur = objectDocente[docenteCur] ?? 'N/A'
   let idPeriodoCur = objectPeriodoCur[PeriodoCur] ?? 'N/A'
-  const idGrado = objectGrado[GradoCur] ?? 'N/A'
+  const idGrado = objectGradoID[GradoCur] ?? 'N/A'
 
   const calculadoraDoc = SpreadsheetApp.openById(`${idDocenteCur}`).getSheetByName('Análisis')
   let dataCalculadoraDoc = calculadoraDoc.getDataRange().getValues()
@@ -367,4 +337,96 @@ function curso(numeros) {
     planillasDoc.getRange(idPeriodoCur, celdaColumnaAsigDoc + 1).setValue(dataColum[i])
     idPeriodoCur += 1
   }
+}
+
+function directivas (object) {
+  let objectDocente = DatabaseDoc()
+  var docenteCambio = object.cambioDoc
+  const idDocenteCambi = objectDocente[docenteCambio]
+  const nuevaDoc = object.nombreDocNuv
+
+  SpreadsheetApp.openById(`${idDocenteCambi}`).setName(nuevaDoc)
+
+  const idBaseData = '1XqiRk7cVqoYiWNFdZ6ePYrjdsmFZugDzGGtpw5ouR9U'
+  let agregarObtenerData = SpreadsheetApp.openById(`${idBaseData}`).getActiveSheet()
+  let data = agregarObtenerData.getRange(2, 1, 30, 1).getValues()
+
+  let nombreApellidos = SpreadsheetApp.openById(`${idDocenteCambi}`).getActiveSheet()
+  nombreApellidos.getRange(1, 7).setValue(object.nombreApellido)
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].includes(docenteCambio)) {
+      let fila = i
+      agregarObtenerData.getRange(fila + 2, 1).setValue(nuevaDoc)
+    }
+  }
+}
+
+function directivaEliminar (object) {
+  let objectDocente = DatabaseDoc()
+  let docenteEliminar = object.eliminarDoc
+  const idDocenteEli = objectDocente[docenteEliminar]
+
+  const idBaseData = '1XqiRk7cVqoYiWNFdZ6ePYrjdsmFZugDzGGtpw5ouR9U'
+  let agregarObtenerData = SpreadsheetApp.openById(`${idBaseData}`).getActiveSheet()
+  let data = agregarObtenerData.getRange(2, 1, 30, 1).getValues()
+  let archivo = DriveApp.getFileById(idDocenteEli)
+  archivo.setTrashed(true)
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].includes(docenteEliminar)) {
+      let position = i
+      agregarObtenerData.deleteRow(position + 2)
+    }
+  }
+}
+
+function agregar (object) {
+  const idBaseData = '1XqiRk7cVqoYiWNFdZ6ePYrjdsmFZugDzGGtpw5ouR9U'
+  let agregarObtenerData = SpreadsheetApp.openById(`${idBaseData}`).getActiveSheet()
+  let archivo = DriveApp.getFileById(`${object.InputIdArch}`)
+  archivo.setName(object.InputDocNom)
+  let nombreDocente = SpreadsheetApp.openById(`${object.InputIdArch}`).getActiveSheet()
+  nombreDocente.getRange(1, 7).setValue(object.InputNombA)
+  agregarObtenerData.appendRow([`${object.InputDocNom}`, `${object.InputNombA}`, `${object.InputIdArch}`])
+}
+
+function agregarEva (object) {
+  const idBaseData = '1XqiRk7cVqoYiWNFdZ6ePYrjdsmFZugDzGGtpw5ouR9U'
+  let agregarObtenerData = SpreadsheetApp.openById(`${idBaseData}`).getSheetByName('Evaluaciones')
+  let archivo = DriveApp.getFileById(`${object.inputArchivoCrea}`)
+  archivo.setName(object.inputEvaArea)
+  let nombreÁrea = SpreadsheetApp.openById(`${object.inputArchivoCrea}`).getActiveSheet()
+  nombreÁrea.getRange(1, 7).setValue(object.inputNombreArea)
+  agregarObtenerData.appendRow([`${object.inputEvaArea}`, `${object.inputArchivoCrea}`])
+}
+
+function directivaEliminarEva (object) {
+  let objectEvaluacion = DatabaseEva()
+  let evaluacionEliminar = object.eliminarEva
+  const idDocenteEli = objectEvaluacion[evaluacionEliminar]
+
+  const idBaseData = '1XqiRk7cVqoYiWNFdZ6ePYrjdsmFZugDzGGtpw5ouR9U'
+  let agregarObtenerData = SpreadsheetApp.openById(`${idBaseData}`).getSheetByName('Evaluaciones')
+  let data = agregarObtenerData.getRange(2, 1, 17, 1).getValues()
+  let archivo = DriveApp.getFileById(idDocenteEli)
+  archivo.setTrashed(true)
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].includes(evaluacionEliminar)) {
+      let position = i
+      agregarObtenerData.deleteRow(position + 2)
+    }
+  }
+}
+
+function leerBasedeDatos () {
+  const idBaseData = '1XqiRk7cVqoYiWNFdZ6ePYrjdsmFZugDzGGtpw5ouR9U'
+  let agregarObtenerDataDoc = SpreadsheetApp.openById(`${idBaseData}`).getSheetByName('Docente')
+  let agregarObtenerDataEva = SpreadsheetApp.openById(`${idBaseData}`).getSheetByName('Evaluaciones')
+  let dataBaseDocnom = agregarObtenerDataDoc.getRange(2, 1, 30, 1).getValues()
+  let dataBaseEvaMat = agregarObtenerDataEva.getRange(2, 1, 17, 1).getValues()
+  let objec = {
+    dataBaseDoc: dataBaseDocnom,
+    dataBaseEva: dataBaseEvaMat
+  }
+  return objec
 }
